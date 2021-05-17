@@ -5,12 +5,16 @@ const { token } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
+// Command handler
+
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
 }
+
+// Event handler
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
@@ -23,6 +27,5 @@ for(const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
-
 
 client.login(token);
