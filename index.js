@@ -1,16 +1,28 @@
+const fs = require('fs');
 const Discord = require('discord.js');
-const config = require('./config.json');
+const { token } = require('./config.json');
 
 const client = new Discord.Client();
+client.commands = new Discord.Collection();
 
-client.once('ready', () => {
-  console.log('Ready!');
-  console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
-  client.user.setActivity('b a n a n a');
-});
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-client.on('message', message => {
-  console.log(message.content);
-});
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  client.commands.set(command.name, command);
+}
 
-client.login(config.token);
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for(const file of eventFiles) {
+  const event = require(`./events/${file}`);
+  if(event.once) {
+    client.once(event.name, (...args) => event.execute(...args, client));
+  }
+  else {
+    client.on(event.name, (...args) => event.execute(...args, client));
+  }
+}
+
+
+client.login(token);
