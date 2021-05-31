@@ -15,6 +15,7 @@ module.exports = {
       }
       else {
         message.channel.send(`Você não tem permissão para usar este comando! ${message.author}`);
+        
       }
     }
   },
