@@ -5,6 +5,7 @@ const { token } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
+client.login(token);
 // Command handler
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -27,5 +28,3 @@ for(const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
-
-client.login(token);
