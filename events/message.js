@@ -5,12 +5,16 @@ module.exports = {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
+    const commandName = args.shift().toLowerCase();
 
-    if (!client.commands.has(command)) return;
+    if (!client.commands.has(commandName)) return;
+
+    const command = client.commands.get(commandName);
+
+    // if (!command) return;
 
     try {
-      client.commands.get(command).execute(message, args);
+      command.execute(message, args);
     // eslint-disable-next-line brace-style
     } catch (error) {
       console.error(error);
