@@ -1,11 +1,13 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { token } = require('./config.json');
+const mySecret = process.env['CLIENT_TOKEN']
+
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-client.login(token);
+client.login(mySecret);
 
 // Command handler
 
@@ -32,3 +34,10 @@ for(const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
+
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('ok');
+});
+server.listen(3000);

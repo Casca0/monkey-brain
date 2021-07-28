@@ -3,19 +3,27 @@ module.exports = {
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
-    message.channel.send(`VOCÊ ACABA DE MACETAR ${user}`);
+    const m = `VOCÊ ACABA DE MACETAR ${user}`
+
+    if (user) {
+      message.channel.send(m);
+    }
 
     if (user == message.author) {
-      message.channel.send('CARALHO!\nVOCÊ SE MACETOU!!!');
+      m = 'CARALHO!\nVOCÊ SE MACETOU!!!';
+      message.channel.send(m);
     }
     else if (user.id == '840221907622166579') {
-      message.channel.send('O FILHO DA PUTA, VOU TE TACAR A BANANA EM');
+      m = 'TU TENTOU ME MACETAR?\nO FILHO DA PUTA, VOU TE TACAR A BANANA EM';
+      message.channel.send(m);
     }
     else if (user.bot == true) {
-      message.channel.send('MAS ESSE CU É IMACETÁVEL!');
+      m = 'TU TENTOU MACETAR UM BOT E TU FOI MACETADO';
+      message.channel.send(m);
     }
     else if (user.id == '380198082811396097') {
-      message.channel.send('VOCÊ MACETOU O ADM, QUE FILHO DA PUTA!');
+      m ='VOCÊ MACETOU O ADM, QUE FILHO DA PUTA!';
+      message.channel.send(m);
     }
   },
 };
