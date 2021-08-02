@@ -23,8 +23,11 @@ module.exports = {
       message.channel.send(m);
     }
     else if (user.id == '380198082811396097') {
-      m ='VOCÊ MACETOU O ADM, QUE FILHO DA PUTA!';
-      message.channel.send(m);
+      const embed = new MessageEmbed()
+        .setTitle('Você tentou macetar o ADM?')
+        .setColor('#967927')
+        .setImage('https://i.imgur.com/KODJ8aM.gif');
+      message.channel.send(embed);
     }
 
     else {

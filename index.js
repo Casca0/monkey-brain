@@ -1,7 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { token } = require('./config.json');
-const mySecret = process.env['CLIENT_TOKEN']
+const mySecret = process.env['CLIENT_TOKEN'];
 
 
 const client = new Discord.Client();
@@ -34,6 +33,8 @@ for(const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
+
+// Server
 
 const http = require('http');
 const server = http.createServer((req, res) => {
