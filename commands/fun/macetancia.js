@@ -24,9 +24,10 @@ module.exports = {
     }
     else if (user.id == '380198082811396097') {
       const embed = new MessageEmbed()
-        .setTitle('Você tentou macetar o ADM?')
+        .setTitle(`Você tentou macetar o ADM?`)
+				.setDescription(user)
         .setColor('#967927')
-        .setImage('https://i.imgur.com/KODJ8aM.gif');
+        .setImage('https://media1.tenor.com/images/1d78b613692b7cfe01c2f2a4a0b2f6fc/tenor.gif?itemid=5072717');
       message.channel.send(embed);
     }
 

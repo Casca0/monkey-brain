@@ -1,12 +1,12 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const mySecret = process.env['CLIENT_TOKEN'];
+const token = process.env['CLIENT_TOKEN'];
 
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-client.login(mySecret);
+client.login(token);
 
 // Command handler
 
