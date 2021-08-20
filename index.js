@@ -5,6 +5,7 @@ const token = process.env['CLIENT_TOKEN'];
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+client.cooldowns = new Discord.Collection();
 
 client.login(token);
 
@@ -30,7 +31,7 @@ for(const file of eventFiles) {
     client.once(event.name, (...args) => event.execute(...args, client));
   }
   else {
-    client.on(event.name, (...args) => event.execute(...args, client));
+    client.on(event.name, (...args) => event.execute(...args, client, Discord));
   }
 }
 

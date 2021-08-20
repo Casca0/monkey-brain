@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: 'macetancia',
+	cooldown: 60,
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
