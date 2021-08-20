@@ -6,7 +6,7 @@ module.exports = {
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
-    let m = `VOCÊ ACABA DE MACETAR ${user}`
+    let m = `VOCÊ ACABA DE MACETAR ${user}`;
 
     if (user == message.author) {
       m = 'CARALHO!\nVOCÊ SE MACETOU!!!';
@@ -25,7 +25,7 @@ module.exports = {
     }
     else if (user.id == '380198082811396097') {
       const embed = new MessageEmbed()
-        .setTitle(`Você tentou macetar o ADM?`)
+        .setTitle('Você tentou macetar o ADM?')
 				.setDescription(user)
         .setColor('#967927')
         .setImage('https://media1.tenor.com/images/1d78b613692b7cfe01c2f2a4a0b2f6fc/tenor.gif?itemid=5072717');
@@ -35,5 +35,5 @@ module.exports = {
     else {
       message.channel.send(m);
     }
-  }, 
+  },
 };
