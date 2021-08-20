@@ -3,7 +3,9 @@ const Discord = require('discord.js');
 const token = process.env['CLIENT_TOKEN'];
 
 
-const client = new Discord.Client();
+const client = new Discord.Client({
+  intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES'],
+});
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 

@@ -17,10 +17,8 @@
   },
   "homepage": "https://github.com/Casca0/discord-bot#readme",
   "dependencies": {
-    "discord.js": "^12.5.3",
-    "nodemon": "^2.0.7",
-    "sequelize": "^6.6.5",
-    "sqlite3": "^5.0.2"
+    "discord.js": "^13.1.0",
+    "nodemon": "^2.0.12"
   },
   "devDependencies": {
     "eslint": "^7.26.0"
