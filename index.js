@@ -45,3 +45,17 @@ const server = http.createServer((req, res) => {
   res.end('ok');
 });
 server.listen(3000);
+
+/*
+      __
+ ____|  |____
+ ------------
+  |  O  O  |
+  |   <    |
+  |  ----  |
+  |________|
+
+GOD MARCELO HERE
+I'M WATCHING YOU
+
+*/
