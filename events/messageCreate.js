@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const { prefix } = require('../config.json');
 module.exports = {
-  name:'message',
+  name:'messageCreate',
   execute(message, client, Discord) {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -27,7 +27,7 @@ module.exports = {
 
       if (now < expirationTime) {
         const timeLeft = (expirationTime - now) / 1000;
-        return message.reply(`Por favor espere ${timeLeft.toFixed(0)} segundos antes de usar o comando \`${command.name}\`.`);
+        return message.reply(`Por favor espere \`${timeLeft.toFixed(0)}\` segundos antes de usar o comando \`${command.name}\`.`);
       }
     }
 
