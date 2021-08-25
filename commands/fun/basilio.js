@@ -7,6 +7,6 @@ module.exports = {
       .setTitle('BASÍLIO MACACO BRANCO')
       .setColor('#ffffff')
       .setImage('https://i.imgur.com/KrYc7V2.jpg');
-    message.channel.send(embed);
+    message.channel.send({ embeds: [ embed ] });
   },
 };

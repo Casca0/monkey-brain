@@ -1,12 +1,12 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-  name: 'mascote',
+  name: 'gabu',
   execute(message) {
     const embed = new MessageEmbed()
-      .setTitle('MASCOTE DA MAMMUS')
-      .setColor('#f70088')
-      .setImage('https://i.imgur.com/UahVi47.png');
+      .setTitle('Fã do Muca')
+      .setColor('#26d6ff')
+      .setImage('https://c.tenor.com/YEydc6_JLWEAAAAS/mucalol-muquinha.gif');
     message.channel.send({ embeds: [ embed ] });
   },
 };

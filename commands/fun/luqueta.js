@@ -7,6 +7,6 @@ module.exports = {
       .setTitle('ASSINA MEU ONLYFANS')
       .setColor('#d51b51')
       .setImage('https://c.tenor.com/iZU7Q5iiDn8AAAAS/take-a-seat-come.gif');
-    message.channel.send(embed);
+    message.channel.send({ embeds: [ embed ] });
   },
 };

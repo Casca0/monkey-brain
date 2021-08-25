@@ -1,12 +1,12 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-  name: 'mascote',
+  name: 'xuliana',
   execute(message) {
     const embed = new MessageEmbed()
-      .setTitle('MASCOTE DA MAMMUS')
-      .setColor('#f70088')
-      .setImage('https://i.imgur.com/UahVi47.png');
+      .setTitle('Xuliana Kpoper')
+      .setColor('#26d6ff')
+      .setImage('https://c.tenor.com/wq0PXInk6UAAAAAC/dahyun-kpop.gif');
     message.channel.send({ embeds: [ embed ] });
   },
 };

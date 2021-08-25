@@ -7,6 +7,6 @@ module.exports = {
       .setTitle('CASCÃO FILMES')
       .setColor('#ffffff')
       .setImage('https://i.imgur.com/ezTvkyx.png');
-    message.channel.send(embed);
+    message.channel.send({ embeds: [ embed ] });
   },
 };

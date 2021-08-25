@@ -7,6 +7,6 @@ module.exports = {
       .setTitle('BOLDINI FUTANARI')
       .setColor('#fc03a5')
       .setImage('https://i.imgur.com/BSvdkhZ.png');
-    message.channel.send(embed);
+    message.channel.send({ embeds: [ embed ] });
   },
 };
