@@ -1,12 +1,16 @@
 const { MessageEmbed } = require('discord.js');
+const { macetaVibes } = require('./macetanciaMoves.json');
 
 module.exports = {
   name: 'macetancia',
-	cooldown: 30,
+	// cooldown: 30,
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
-    const m = `VOCÊ ACABA DE MACETAR ${user}`;
+    const lenght = macetaVibes.length - 1;
+    const index = Math.round(Math.random() * lenght);
+    const maceta = macetaVibes[index];
+    const m = `${maceta} ${user}`;
     let em;
 
     switch (user.id) {
