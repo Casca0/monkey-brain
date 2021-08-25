@@ -3,7 +3,7 @@ const { macetaVibes } = require('./macetanciaMoves.json');
 
 module.exports = {
   name: 'macetancia',
-	// cooldown: 30,
+	cooldown: 30,
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
