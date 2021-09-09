@@ -10,7 +10,7 @@ module.exports = {
     const lenght = macetaVibes.length - 1;
     const index = Math.round(Math.random() * lenght);
     const maceta = macetaVibes[index];
-    const m = `${maceta} ${user}`;
+    const m = `${maceta}${user}`;
     let em;
 
     switch (user.id) {
@@ -37,6 +37,15 @@ module.exports = {
           message.channel.send({ embeds: [em] });
           break;
       default:
+				if (user.bot == true) {
+					em = new MessageEmbed()
+						.setTitle('TCHU TCHU')
+						.setDescription(`${user}`)
+						.setColor('#967927')
+						.setImage('https://c.tenor.com/ebTWNO6KmNYAAAAC/picapau-puchapenas.gif');
+					message.channel.send({ embeds: [em] });
+					return;
+				}
         message.channel.send(m);
         break;
     }
