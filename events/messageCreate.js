@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 const { prefix } = require('../config.json');
+const profileModel = require('../models/profileSchema');
 module.exports = {
   name:'messageCreate',
-  execute(message, client, Discord) {
+  async execute(message, client, Discord) {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -11,6 +12,8 @@ module.exports = {
     if (!client.commands.has(commandName)) return;
 
     const command = client.commands.get(commandName);
+
+    // Command cooldown
 
     const { cooldowns } = client;
 
@@ -34,8 +37,30 @@ module.exports = {
     timestamps.set(message.author.id, now);
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
+    // Database
+
+    let profileData;
     try {
-      command.execute(message, args, Discord, client);
+      profileData = await profileModel.findOne({ userID: message.author.id });
+      if (!profileData) {
+        const profile = await profileModel.create({
+          userID: message.author.id,
+          serverID: message.guild.id,
+          coins: 1000,
+          bank: 0,
+          macetanciaCounter: 0,
+        });
+        profile.save();
+      }
+    // eslint-disable-next-line brace-style
+    } catch (err) {
+      console.log(err);
+    }
+
+    // Execute command
+
+    try {
+      command.execute(message, profileData, args, Discord, client);
     }
     catch (error) {
       console.error(error);

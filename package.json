@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Casca0/discord-bot#readme",
   "dependencies": {
     "discord.js": "^13.1.0",
+    "mongoose": "^6.0.5",
     "node": "^16.6.1",
     "nodemon": "^2.0.12",
     "npm": "^7.21.0"

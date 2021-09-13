@@ -1,9 +1,10 @@
 const { MessageEmbed } = require('discord.js');
 const { macetaVibes } = require('./macetanciaMoves.json');
+const profileModel = require('../../models/profileSchema');
 
 module.exports = {
   name: 'macetancia',
-	cooldown: 30,
+	cooldown: 60,
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
@@ -12,6 +13,33 @@ module.exports = {
     const maceta = macetaVibes[index];
     const m = `${maceta}${user}`;
     let em;
+
+    // Coins
+
+    const randomNumber = Math.floor(Math.random() * 500) + 1;
+    // eslint-disable-next-line no-unused-vars
+    const response = await profileModel.findOneAndUpdate(
+      {
+        userID: message.author.id,
+      },
+      {
+        $inc: {
+          coins: randomNumber,
+        },
+      },
+    );
+
+    // eslint-disable-next-line no-unused-vars
+    const counter = await profileModel.findOneAndUpdate(
+      {
+        userID: user.id,
+      },
+      {
+        $inc: {
+          macetanciaCounter: 1,
+        },
+      },
+    );
 
     switch (user.id) {
       case '380198082811396097':
@@ -24,9 +52,9 @@ module.exports = {
         break;
         case '720849770624581692':
           em = new MessageEmbed()
-          .setTitle('Você tentou me macetar?')
-          .setColor('#967927')
-          .setImage('https://i.imgur.com/mWw7OIa.gif');
+            .setTitle('Você tentou me macetar?')
+            .setColor('#967927')
+            .setImage('https://i.imgur.com/mWw7OIa.gif');
           message.channel.send({ embeds: [em] });
         break;
         case message.author.id:
