@@ -19,7 +19,7 @@ module.exports = {
       .setTitle('Iniciativa Mammus')
       .setDescription(`Bem-vindo(a) macaquinho(a) tome uma banana 🍌\nMe dê uma beijoca! ${emoji}\n` + userList)
       .setThumbnail(member.user.avatarURL());
-    // defaultChannel.send({ embeds: [em] });
+    defaultChannel.send({ embeds: [em] });
 
     // Database
 
