@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const token = process.env['CLIENT_TOKEN'];
+const mongoose = require('mongoose');
 
 
 const client = new Discord.Client({
@@ -36,6 +37,15 @@ for(const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args, client, Discord));
   }
 }
+
+mongoose.connect('mongodb+srv://Casca0:Lucas157@cluster0.pbfid.mongodb.net/MonekyBrainDB?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('AAAAAAAAAAA CONECTEI');
+}).catch((err) => {
+  console.log(err);
+});
 
 // Server
 

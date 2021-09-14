@@ -1,8 +1,13 @@
+/* eslint-disable no-unused-vars */
 const { MessageEmbed, Collection } = require('discord.js');
+const profileModel = require('../models/profileSchema');
 
 module.exports = {
   name: 'guildMemberAdd',
-  execute(member) {
+  async execute(member, client, Discord) {
+
+    // Welcome message
+
     const guild = member.guild;
     const newUsers = new Collection();
     const emoji = member.guild.emojis.cache.find(emj => emj.name == 'hmm');
@@ -14,6 +19,18 @@ module.exports = {
       .setTitle('Iniciativa Mammus')
       .setDescription(`Bem-vindo(a) macaquinho(a) tome uma banana 🍌\nMe dê uma beijoca! ${emoji}\n` + userList)
       .setThumbnail(member.user.avatarURL());
-    defaultChannel.send({ embeds: [em] });
+    // defaultChannel.send({ embeds: [em] });
+
+    // Database
+
+    const profile = await profileModel.create({
+      userID: member.id,
+      serverID: member.guild.id,
+      coins: 1000,
+      bank: 0,
+      macetanciaCounter: 0,
+      walletName: 'Extrato',
+    });
+    profile.save();
   },
 };
