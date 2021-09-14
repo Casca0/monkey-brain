@@ -10,15 +10,6 @@ module.exports = {
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
-    const m = new MessageEmbed()
-      .setDescription(`${maceta}${user}`)
-      .setColor(`${color}`)
-      .setImage(`${visions}`);
-
-    let em;
-    let response;
-    let counter;
-    let randomNumber;
 
     const l1 = macetaVibes.length - 1;
     const i1 = Math.round(Math.random() * l1);
@@ -29,6 +20,16 @@ module.exports = {
     const maceta = macetaVibes[i1];
     const visions = macetaVisions[i2];
     const color = macetaColor[i3];
+
+    const m = new MessageEmbed()
+      .setDescription(`${maceta}${user}`)
+      .setColor(`${color}`)
+      .setImage(`${visions}`);
+
+    let em;
+    let response;
+    let counter;
+    let randomNumber;
 
     counter = await profileModel.findOneAndUpdate(
       {
