@@ -1,8 +1,16 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-case-declarations */
 const { MessageEmbed } = require('discord.js');
 const { macetaVibes, macetaVisions, macetaColor } = require('./macetanciaMoves.json');
 const profileModel = require('../../models/profileSchema');
+const l1 = macetaVibes.length - 1;
+const i1 = Math.round(Math.random() * l1);
+const l2 = macetaVisions.length - 1;
+const i2 = Math.round(Math.random() * l2);
+const l3 = macetaColor.length - 1;
+const i3 = Math.round(Math.random() * l3);
+const maceta = macetaVibes[i1];
+const visions = macetaVisions[i2];
+const color = macetaColor[i3];
 
 module.exports = {
   name: 'macetancia',
@@ -10,15 +18,6 @@ module.exports = {
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
-    const l1 = macetaVibes.length - 1;
-    const i1 = Math.round(Math.random() * l1);
-    const l2 = macetaVisions.length - 1;
-    const i2 = Math.round(Math.random() * l2);
-    const l3 = macetaColor.length - 1;
-    const i3 = Math.round(Math.random() * l3);
-    const maceta = macetaVibes[i1];
-    const visions = macetaVisions[i2];
-    const color = macetaColor[i3];
     const m = new MessageEmbed()
       .setDescription(`${maceta}${user}`)
       .setColor(`${color}`)
@@ -26,6 +25,7 @@ module.exports = {
     let em;
     let response;
     let counter;
+    let randomNumber;
 
     counter = await profileModel.findOneAndUpdate(
       {
@@ -94,7 +94,7 @@ module.exports = {
 
         // Coins
 
-        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        randomNumber = Math.floor(Math.random() * 100) + 1;
         response = await profileModel.findOneAndUpdate(
           {
             userID: message.author.id,
