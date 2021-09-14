@@ -1,11 +1,11 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-  name: 'balance',
+  name: 'bal',
   description: 'Verifica a carteira do usuário',
   execute(message, profileData) {
     const em = new MessageEmbed()
-      .setTitle('Extrato')
+      .setTitle(`${profileData.walletName}`)
       .setColor('#32a84a')
       .setDescription('WIP')
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))

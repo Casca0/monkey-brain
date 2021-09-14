@@ -29,6 +29,7 @@ module.exports = {
       coins: 1000,
       bank: 0,
       macetanciaCounter: 0,
+      walletName: 'Extrato',
     });
     profile.save();
   },
