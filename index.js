@@ -38,7 +38,7 @@ for(const file of eventFiles) {
   }
 }
 
-mongoose.connect('mongodb+srv://Casca0:Lucas157@cluster0.pbfid.mongodb.net/MonekyBrainDB?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_TOKEN, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
