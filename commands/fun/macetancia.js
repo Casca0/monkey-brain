@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-case-declarations */
 const { MessageEmbed } = require('discord.js');
 const { macetaVibes, macetaVisions, macetaColor } = require('./macetanciaMoves.json');
 const profileModel = require('../../models/profileSchema');
@@ -22,24 +24,11 @@ module.exports = {
       .setColor(`${color}`)
       .setImage(`${visions}`);
     let em;
-
-    // Coins
-
-    const randomNumber = Math.floor(Math.random() * 300) + 1;
-    // eslint-disable-next-line no-unused-vars
-    const response = await profileModel.findOneAndUpdate(
-      {
-        userID: message.author.id,
-      },
-      {
-        $inc: {
-          coins: randomNumber,
-        },
-      },
-    );
+    let response;
+    let counter;
 
     // eslint-disable-next-line no-unused-vars
-    const counter = await profileModel.findOneAndUpdate(
+    counter = await profileModel.findOneAndUpdate(
       {
         userID: user.id,
       },
@@ -58,6 +47,16 @@ module.exports = {
           .setColor(`${color}`)
           .setImage('https://media1.tenor.com/images/1d78b613692b7cfe01c2f2a4a0b2f6fc/tenor.gif?itemid=5072717');
         message.channel.send({ embeds: [em] });
+        response = await profileModel.findOneAndUpdate(
+          {
+            userID: message.author.id,
+          },
+          {
+            $inc: {
+              coins: 600,
+            },
+          },
+        );
         break;
         case '720849770624581692':
           em = new MessageEmbed()
@@ -72,6 +71,17 @@ module.exports = {
             .setColor(`${color}`)
             .setImage(`${visions}`);
           message.channel.send({ embeds: [em] });
+
+          counter = await profileModel.findOneAndUpdate(
+            {
+              userID: message.author.id,
+            },
+            {
+              $inc: {
+                macetanciaCounter: 1,
+              },
+            },
+          );
           break;
       default:
 				if (user.bot == true) {
@@ -82,6 +92,20 @@ module.exports = {
 						.setImage('https://c.tenor.com/ebTWNO6KmNYAAAAC/picapau-puchapenas.gif');
 					message.channel.send({ embeds: [em] });
 				}
+
+        // Coins
+
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        response = await profileModel.findOneAndUpdate(
+          {
+            userID: message.author.id,
+          },
+          {
+            $inc: {
+              coins: randomNumber,
+            },
+          },
+        );
         message.channel.send({ embeds: [m] });
         break;
     }
