@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const token = 'NzIwODQ5NzcwNjI0NTgxNjky.XuL9qg.8rFmEaoPUf_ysNg4oxNM2kRDAso';
+const token = process.env['CLIENT_TOKEN'];
 const mongoose = require('mongoose');
 
 
