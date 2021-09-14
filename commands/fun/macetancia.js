@@ -31,17 +31,6 @@ module.exports = {
     let counter;
     let randomNumber;
 
-    counter = await profileModel.findOneAndUpdate(
-      {
-        userID: user.id,
-      },
-      {
-        $inc: {
-          macetanciaCounter: 1,
-        },
-      },
-    );
-
     switch (user.id) {
       case '380198082811396097':
         em = new MessageEmbed()
@@ -110,6 +99,18 @@ module.exports = {
             },
           },
         );
+
+        counter = await profileModel.findOneAndUpdate(
+          {
+            userID: user.id,
+          },
+          {
+            $inc: {
+              macetanciaCounter: 1,
+            },
+          },
+        );
+
         message.channel.send({ embeds: [m] });
         break;
     }
