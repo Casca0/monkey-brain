@@ -27,7 +27,6 @@ module.exports = {
     let response;
     let counter;
 
-    // eslint-disable-next-line no-unused-vars
     counter = await profileModel.findOneAndUpdate(
       {
         userID: user.id,
