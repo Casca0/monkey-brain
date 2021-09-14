@@ -2,15 +2,7 @@
 const { MessageEmbed } = require('discord.js');
 const { macetaVibes, macetaVisions, macetaColor } = require('./macetanciaMoves.json');
 const profileModel = require('../../models/profileSchema');
-const l1 = macetaVibes.length - 1;
-const i1 = Math.round(Math.random() * l1);
-const l2 = macetaVisions.length - 1;
-const i2 = Math.round(Math.random() * l2);
-const l3 = macetaColor.length - 1;
-const i3 = Math.round(Math.random() * l3);
-const maceta = macetaVibes[i1];
-const visions = macetaVisions[i2];
-const color = macetaColor[i3];
+
 
 module.exports = {
   name: 'macetancia',
@@ -22,10 +14,21 @@ module.exports = {
       .setDescription(`${maceta}${user}`)
       .setColor(`${color}`)
       .setImage(`${visions}`);
+
     let em;
     let response;
     let counter;
     let randomNumber;
+
+    const l1 = macetaVibes.length - 1;
+    const i1 = Math.round(Math.random() * l1);
+    const l2 = macetaVisions.length - 1;
+    const i2 = Math.round(Math.random() * l2);
+    const l3 = macetaColor.length - 1;
+    const i3 = Math.round(Math.random() * l3);
+    const maceta = macetaVibes[i1];
+    const visions = macetaVisions[i2];
+    const color = macetaColor[i3];
 
     counter = await profileModel.findOneAndUpdate(
       {
@@ -90,6 +93,7 @@ module.exports = {
             .setColor(`${color}`)
 						.setImage('https://c.tenor.com/ebTWNO6KmNYAAAAC/picapau-puchapenas.gif');
 					message.channel.send({ embeds: [em] });
+          return;
 				}
 
         // Coins
