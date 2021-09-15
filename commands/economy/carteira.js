@@ -4,6 +4,7 @@ module.exports = {
   name: 'cname',
   description: 'Muda o nome da carteira do usuário',
   async execute(message, profileData, args) {
+    const name = args.join(' ');
     if(args) {
       // eslint-disable-next-line no-unused-vars
       const response = await profileModel.findOneAndUpdate(
@@ -12,7 +13,7 @@ module.exports = {
         },
         {
           $set: {
-            walletName: args.join(' '),
+            walletName: name,
           },
         },
       );
