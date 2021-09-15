@@ -17,7 +17,7 @@ module.exports = {
           },
         },
       );
-      message.channel.send('O nome da sua carteira foi alterado para `' + args + '`');
+      message.channel.send('O nome da sua carteira foi alterado para `' + name + '`');
     }
     else {
       message.channel.send('O nome da sua carteira é `' + profileData.walletName + '`');
