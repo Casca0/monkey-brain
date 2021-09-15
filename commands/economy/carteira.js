@@ -12,11 +12,11 @@ module.exports = {
         },
         {
           $set: {
-            walletName: [...args],
+            walletName: args,
           },
         },
       );
-      message.channel.send('O nome da sua carteira foi alterado para `' + args[0] + '`');
+      message.channel.send('O nome da sua carteira foi alterado para `' + args + '`');
     }
     else {
       message.channel.send('O nome da sua carteira é `' + profileData.walletName + '`');
