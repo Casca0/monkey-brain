@@ -2,9 +2,9 @@ const profileModel = require('../../models/profileSchema');
 
 module.exports = {
   name: 'cname',
-  description: 'Verifica a carteira do usuário',
+  description: 'Muda o nome da carteira do usuário',
   async execute(message, profileData, args) {
-    if(args[0]) {
+    if(args) {
       // eslint-disable-next-line no-unused-vars
       const response = await profileModel.findOneAndUpdate(
         {
@@ -12,7 +12,7 @@ module.exports = {
         },
         {
           $set: {
-            walletName: args[0],
+            walletName: [...args],
           },
         },
       );
