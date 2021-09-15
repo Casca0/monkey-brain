@@ -12,7 +12,7 @@ module.exports = {
         },
         {
           $set: {
-            walletName: args,
+            walletName: args.join(' '),
           },
         },
       );
