@@ -7,6 +7,7 @@ const profileModel = require('../../models/profileSchema');
 module.exports = {
   name: 'macetancia',
 	cooldown: 160,
+  aliases: ['maceta', 'mct'],
   async execute(message) {
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;

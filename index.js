@@ -9,6 +9,7 @@ const client = new Discord.Client({
 });
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
+client.aliases = new Discord.Collection();
 
 client.login(token);
 
@@ -21,6 +22,11 @@ for(const folder of commandFolders) {
   for(const file of commandFiles) {
     const command = require(`./commands/${folder}/${file}`);
     client.commands.set(command.name, command);
+    if (command.aliases) {
+      command.aliases.forEach(alias => {
+        client.aliases.set(alias, command);
+      });
+    }
   }
 }
 

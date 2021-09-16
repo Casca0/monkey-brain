@@ -11,7 +11,7 @@ module.exports = {
 
     if (!client.commands.has(commandName)) return;
 
-    const command = client.commands.get(commandName);
+    const command = client.commands.get(commandName) || client.aliases.get(commandName);
 
     // Command cooldown
 
