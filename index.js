@@ -24,7 +24,7 @@ for(const folder of commandFolders) {
     client.commands.set(command.name, command);
     if (command.aliases) {
       command.aliases.forEach(alias => {
-        client.aliases.set(alias, command);
+        client.command.set(alias, command);
       });
     }
   }
