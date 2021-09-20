@@ -32,6 +32,25 @@ module.exports = {
     let counter;
     let randomNumber;
 
+    let profileData;
+    try {
+      profileData = await profileModel.findOne({ userID: user.id });
+      if (!profileData) {
+        const profile = await profileModel.create({
+          userID: user.id,
+          serverID: message.guild.id,
+          coins: 1000,
+          bank: 0,
+          macetanciaCounter: 0,
+          walletName: 'Extrato',
+        });
+        profile.save();
+      }
+    // eslint-disable-next-line brace-style
+    } catch (err) {
+      console.log(err);
+    }
+
     switch (user.id) {
       case '380198082811396097':
         em = new MessageEmbed()
@@ -47,6 +66,16 @@ module.exports = {
           {
             $inc: {
               coins: 600,
+            },
+          },
+        );
+        counter = await profileModel.findOneAndUpdate(
+          {
+            userID: user.id,
+          },
+          {
+            $inc: {
+              macetanciaCounter: 1,
             },
           },
         );
