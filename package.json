@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Casca0/discord-bot#readme",
   "dependencies": {
+    "ansi-regex": "^6.0.1",
     "discord.js": "^13.1.0",
     "mongoose": "^6.0.5",
     "nodemon": "^2.0.12",
