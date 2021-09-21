@@ -22,15 +22,18 @@ module.exports = {
     const visions = macetaVisions[i2];
     const color = macetaColor[i3];
 
+    const randomNumber = Math.floor(Math.random() * 300) + 1;
+    let em;
+    let response;
+    let counter;
+
     const m = new MessageEmbed()
+      .setTitle(`Você ganhou ${randomNumber} Bananinhas Reais :coin::banana:`)
       .setDescription(`${maceta}${user}`)
       .setColor(`${color}`)
       .setImage(`${visions}`);
 
-    let em;
-    let response;
-    let counter;
-    let randomNumber;
+    // Database
 
     let profileData;
     try {
@@ -118,7 +121,6 @@ module.exports = {
 
         // Coins
 
-        randomNumber = Math.floor(Math.random() * 100) + 1;
         response = await profileModel.findOneAndUpdate(
           {
             userID: message.author.id,
@@ -137,6 +139,7 @@ module.exports = {
           {
             $inc: {
               macetanciaCounter: 1,
+              coins: -randomNumber,
             },
           },
         );
