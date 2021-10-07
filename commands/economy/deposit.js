@@ -5,7 +5,8 @@ module.exports = {
   permissions: [],
   description: 'Deposita dinheiro no seu banco.',
   async execute(message, profileData, args) {
-    const amount = args[0];
+    let amount = args[0];
+    if (amount === 'all') amount = profileData.coins;
     if (amount % 1 != 0 || amount <= 0) return message.channel.send('O depósito tem que ser um número inteiro!');
     try {
       if (amount > profileData.coins) return message.channel.send('Você não tem essa quantia de moedas!');
