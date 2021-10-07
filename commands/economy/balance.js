@@ -6,6 +6,7 @@ module.exports = {
   execute(message, profileData) {
     const em = new MessageEmbed()
       .setTitle(`${profileData.walletName}`)
+      .setAuthor('', message.author.displayAvatarURL({ dynamic: true }))
       .setColor('#32a84a')
       .setDescription('WIP')
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
