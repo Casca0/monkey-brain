@@ -6,7 +6,7 @@ module.exports = {
   description: 'Retira dinheiro do seu banco.',
   async execute(message, profileData, args) {
     let amount = args[0];
-    if (amount === 'all') amount = profileData.coins;
+    if (amount === 'all') amount = profileData.bank;
     if (amount % 1 != 0 || amount <= 0) return message.channel.send('Use um número inteiro!');
 
     try {
