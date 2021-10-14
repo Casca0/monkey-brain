@@ -38,5 +38,8 @@ module.exports = {
         console.log(err);
       }
     }
+    else {
+      return message.channel.send('Você precisa mencionar álguem para transferir!\n?tr <quantia> <usuário>');
+    }
   },
 };
