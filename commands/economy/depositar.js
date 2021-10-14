@@ -1,8 +1,7 @@
 const profileModel = require('../../models/profileSchema');
 module.exports = {
-  name: 'deposita',
+  name: 'depositar',
   aliases: ['dep'],
-  permissions: [],
   description: 'Deposita dinheiro no seu banco.',
   async execute(message, profileData, args) {
     let amount = args[0];

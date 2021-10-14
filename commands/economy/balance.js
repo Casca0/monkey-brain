@@ -1,7 +1,8 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-  name: 'bal',
+  name: 'saldo',
+  aliases: ['sal', 'bal'],
   description: 'Verifica a carteira do usuário',
   execute(message, profileData) {
     const em = new MessageEmbed()

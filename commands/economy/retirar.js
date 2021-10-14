@@ -2,7 +2,6 @@ const profileModel = require('../../models/profileSchema');
 module.exports = {
   name: 'retirar',
   aliases: ['rt'],
-  permissions: [],
   description: 'Retira dinheiro do seu banco.',
   async execute(message, profileData, args) {
     let amount = args[0];

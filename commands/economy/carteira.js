@@ -1,7 +1,8 @@
 const profileModel = require('../../models/profileSchema');
 
 module.exports = {
-  name: 'cname',
+  name: 'carteira',
+  aliases: ['c'],
   description: 'Muda o nome da carteira do usuário',
   async execute(message, profileData, args) {
     const name = args.join(' ');
