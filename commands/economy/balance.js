@@ -8,7 +8,7 @@ module.exports = {
   async execute(message, profileData) {
     let em = new MessageEmbed()
       .setTitle(`${profileData.walletName}`)
-      .setColor('#32a84a')
+      .setColor(profileData.walletColor)
       .setDescription('WIP')
       .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
       .addField('Carteira', `:dollar: \nBR ${profileData.coins}`)
@@ -26,7 +26,7 @@ module.exports = {
       }
       em = new MessageEmbed()
         .setTitle(`${userBal.walletName}`)
-        .setColor('#32a84a')
+        .setColor(userBal.walletColor)
         .setDescription('WIP')
         .setThumbnail(user.displayAvatarURL({ dynamic: true }))
         .addField('Carteira', `:dollar: \nBR ${userBal.coins}`)

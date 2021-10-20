@@ -1,11 +1,11 @@
 const profileModel = require('../../models/profileSchema');
 
 module.exports = {
-  name: 'carteira',
-  aliases: ['c'],
-  description: 'Muda o nome da carteira do usuário',
+  name: 'cor',
+  aliases: ['cr'],
+  description: 'Muda a cor da carteira do usuário',
   async execute(message, profileData, args) {
-    const name = args.join(' ');
+    const color = args[0];
     if(args[0]) {
       // eslint-disable-next-line no-unused-vars
       const response = await profileModel.findOneAndUpdate(
@@ -14,14 +14,14 @@ module.exports = {
         },
         {
           $set: {
-            walletName: name,
+            walletColor: color,
           },
         },
       );
-      message.channel.send('O nome da sua carteira foi alterado para `' + name + '`');
+      message.channel.send('A cor da sua carteira foi alterado para `' + color + '`');
     }
     else {
-      message.channel.send('O nome da sua carteira é `' + profileData.walletName + '`');
+      message.channel.send('A cor da sua carteira é `' + profileData.walletColor + '`');
     }
   },
 };

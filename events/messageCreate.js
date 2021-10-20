@@ -4,7 +4,7 @@ const profileModel = require('../models/profileSchema');
 module.exports = {
   name:'messageCreate',
   async execute(message, client, Discord) {
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    if (!message.content.startsWith(prefix)) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();

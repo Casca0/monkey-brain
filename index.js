@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
+require('dotenv/config');
 const token = process.env['CLIENT_TOKEN'];
 const mongoose = require('mongoose');
 

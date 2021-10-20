@@ -7,6 +7,7 @@ const profileSchema = new mongoose.Schema({
   bank: { type: Number },
   macetanciaCounter: { type: Number },
   walletName: { type: String, default: 'Extrato' },
+  walletColor: { type: String, default: '#32a84a' },
 });
 
 const model = mongoose.model('ProfileModels', profileSchema);
