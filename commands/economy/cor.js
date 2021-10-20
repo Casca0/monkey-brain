@@ -20,12 +20,12 @@ module.exports = {
             },
           },
         );
-        message.channel.send('A cor da sua carteira foi alterado para `' + color + '`');
+        message.reply('A cor da sua carteira foi alterado para `' + color + '`');
       }
-      else { return message.channel.send('Cor inválida!'); }
+      else { return message.reply('Cor inválida!'); }
     }
     else {
-      message.channel.send('A cor da sua carteira é `' + profileData.walletColor + '`');
+      message.reply('A cor da sua carteira é `' + profileData.walletColor + '`');
     }
   },
 };

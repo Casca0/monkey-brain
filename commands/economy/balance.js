@@ -22,7 +22,7 @@ module.exports = {
       const member = message.guild.members.resolve(user);
       const userBal = await profileModel.findOne({ userID: member.id });
       if (!userBal) {
-        return message.channel.send('O Usuário não foi encontrado!');
+        return message.reply('O Usuário não foi encontrado!');
       }
       em = new MessageEmbed()
         .setTitle(`${userBal.walletName}`)
@@ -32,8 +32,8 @@ module.exports = {
         .addField('Carteira', `:dollar: \nBR ${userBal.coins}`)
         .addField('Banco', `:coin: \nBR ${userBal.bank}`)
         .addField('Contador Macetância', `:monkey: ${userBal.macetanciaCounter}`);
-      return message.channel.send({ embeds: [em] });
+      return message.reply({ embeds: [em] });
     }
-    message.channel.send({ embeds: [em] });
+    message.reply({ embeds: [em] });
   },
 };

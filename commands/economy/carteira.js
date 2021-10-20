@@ -18,10 +18,10 @@ module.exports = {
           },
         },
       );
-      message.channel.send('O nome da sua carteira foi alterado para `' + name + '`');
+      message.reply('O nome da sua carteira foi alterado para `' + name + '`');
     }
     else {
-      message.channel.send('O nome da sua carteira é `' + profileData.walletName + '`');
+      message.reply('O nome da sua carteira é `' + profileData.walletName + '`');
     }
   },
 };

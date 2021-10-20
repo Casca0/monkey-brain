@@ -7,11 +7,11 @@ module.exports = {
     let amount = args[0];
     const user = message.mentions.users.first();
     if (amount === 'all') amount = profileData.coins;
-    if (amount % 1 != 0 || amount <= 0) return message.channel.send('A transferência tem que ser um número inteiro!\n?tr <quantia> <usuário>');
+    if (amount % 1 != 0 || amount <= 0) return message.reply('A transferência tem que ser um número inteiro!\n?tr <quantia> <usuário>');
     if (user) {
       try {
         const member = message.guild.members.resolve(user);
-        if (amount > profileData.coins) return message.channel.send('Você não tem essa quantia de BRs para transferir!');
+        if (amount > profileData.coins) return message.reply('Você não tem essa quantia de BRs para transferir!');
         await profileModel.findOneAndUpdate(
           {
             userID: message.author.id,
@@ -32,14 +32,14 @@ module.exports = {
             },
           },
         );
-        return message.channel.send(`Você transferiu ${amount} Bananinhas Reais para ${member}`);
+        return message.reply(`Você transferiu ${amount} Bananinhas Reais para ${member}`);
       }
       catch (err) {
         console.log(err);
       }
     }
     else {
-      return message.channel.send('Você precisa mencionar álguem para transferir!\n?tr <quantia> <usuário>');
+      return message.reply('Você precisa mencionar álguem para transferir!\n?tr <quantia> <usuário>');
     }
   },
 };

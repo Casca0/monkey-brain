@@ -6,10 +6,10 @@ module.exports = {
   async execute(message, profileData, args) {
     let amount = args[0];
     if (amount === 'all') amount = profileData.bank;
-    if (amount % 1 != 0 || amount <= 0) return message.channel.send('Use um número inteiro!');
+    if (amount % 1 != 0 || amount <= 0) return message.reply('Use um número inteiro!');
 
     try {
-      if (amount > profileData.bank) return message.channel.send('Você não tem essa quantia de BRs para retirar!');
+      if (amount > profileData.bank) return message.reply('Você não tem essa quantia de BRs para retirar!');
 
       await profileModel.findOneAndUpdate(
         {
@@ -23,7 +23,7 @@ module.exports = {
         },
       );
 
-      return message.channel.send(`Você retirou ${amount} Bananinhas Reais`);
+      return message.reply(`Você retirou ${amount} Bananinhas Reais`);
     }
     catch (err) {
       console.log(err);
