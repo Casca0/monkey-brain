@@ -6,19 +6,23 @@ module.exports = {
   description: 'Muda a cor da carteira do usuário',
   async execute(message, profileData, args) {
     const color = args[0];
+    const RegExp = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
     if(args[0]) {
-      // eslint-disable-next-line no-unused-vars
-      const response = await profileModel.findOneAndUpdate(
-        {
-          userID: message.author.id,
-        },
-        {
-          $set: {
-            walletColor: color,
+      if (RegExp.test(color) === true) {
+        // eslint-disable-next-line no-unused-vars
+        await profileModel.findOneAndUpdate(
+          {
+            userID: message.author.id,
           },
-        },
-      );
-      message.channel.send('A cor da sua carteira foi alterado para `' + color + '`');
+          {
+            $set: {
+              walletColor: color,
+            },
+          },
+        );
+        message.channel.send('A cor da sua carteira foi alterado para `' + color + '`');
+      }
+      else { return message.channel.send('Cor inválida!'); }
     }
     else {
       message.channel.send('A cor da sua carteira é `' + profileData.walletColor + '`');
