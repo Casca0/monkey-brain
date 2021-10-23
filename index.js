@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 require('dotenv/config');
 const token = process.env['CLIENT_TOKEN'];
 const mongoose = require('mongoose');
+const currencyShop = require('./models/currencyShop');
 
 
 const client = new Discord.Client({
@@ -45,6 +46,8 @@ for(const file of eventFiles) {
   }
 }
 
+// Database
+
 mongoose.connect(process.env.MONGO_TOKEN, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -53,6 +56,21 @@ mongoose.connect(process.env.MONGO_TOKEN, {
 }).catch((err) => {
   console.log(err);
 });
+
+(async () => {
+  const shopInfo = await currencyShop.find({ item_id: 1 });
+  if (!shopInfo) {
+    const shop = await currencyShop.create({
+      name: 'banana',
+      item_id: 1,
+      cost: 1000,
+    });
+    shop.save();
+  }
+  else {
+    return console.log('Esse item já existe');
+  }
+})();
 
 // Server
 
