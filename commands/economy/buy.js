@@ -4,8 +4,8 @@ const inventory = require('../../models/userItems');
 const profileModel = require('../../models/profileSchema');
 
 module.exports = {
-  name: 'buy',
-  aliases: ['b'],
+  name: 'comprar',
+  aliases: ['b', 'crp'],
   description: '',
   async execute(message, profileData, args) {
     try {

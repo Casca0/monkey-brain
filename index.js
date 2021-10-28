@@ -4,6 +4,7 @@ require('dotenv/config');
 const token = process.env['CLIENT_TOKEN'];
 const mongoose = require('mongoose');
 const currencyShop = require('./models/currencyShop');
+const items = require('./models/shopItems');
 
 
 const client = new Discord.Client({
@@ -52,34 +53,30 @@ mongoose.connect(process.env.MONGO_TOKEN, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
-  console.log('AAAAAAAAAAA CONECTEI');
+  console.log('AAAAAAAAAAA CONECTEI AO BANCO MIZERA');
 }).catch((err) => {
   console.log(err);
 });
 
-(async () => {
-  const shopInfo = await currencyShop.find({ item_id: 1 });
-  if (!shopInfo) {
-    const shop = await currencyShop.create({
-      name: 'banana',
-      item_id: 1,
-      cost: 1000,
-    });
-    shop.save();
-  }
-  else {
-    return console.log('Esse item já existe');
+(() => {
+  for (let i = 0; i < items.length; i++) {
+    console.log(items[i].name);
+    (async () => {
+      const shopInfo = await currencyShop.findOne({ item_id: items[i].itemID });
+      if(!shopInfo) {
+        const shop = await currencyShop.create({
+          name: items[i].name,
+          item_id: items[i].itemID,
+          cost: items[i].cost,
+        });
+        shop.save();
+      }
+      else {
+        return console.log('Os itens com estes IDs já estão presentes na loja : \n ID : ' + items[i].itemID + ', ');
+      }
+    })();
   }
 })();
-
-// Server
-
-const http = require('http');
-const server = http.createServer((req, res) => {
-  res.writeHead(200);
-  res.end('ok');
-});
-server.listen(3000);
 
 /*
       __
