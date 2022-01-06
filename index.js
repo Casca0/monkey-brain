@@ -4,6 +4,7 @@ require('dotenv/config');
 const token = process.env['CLIENT_TOKEN'];
 const mongoose = require('mongoose');
 
+// CLient init
 
 const client = new Discord.Client({
   intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES'],
@@ -45,23 +46,17 @@ for(const file of eventFiles) {
   }
 }
 
+// Database
+
 mongoose.connect(process.env.MONGO_TOKEN, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
-  console.log('AAAAAAAAAAA CONECTEI');
+  console.log('AAAAAAAAAAA CONECTEI AO BANCO MIZERA');
 }).catch((err) => {
   console.log(err);
 });
 
-// Server
-
-const http = require('http');
-const server = http.createServer((req, res) => {
-  res.writeHead(200);
-  res.end('ok');
-});
-server.listen(3000);
 
 /*
       __
