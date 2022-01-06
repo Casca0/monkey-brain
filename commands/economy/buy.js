@@ -1,25 +1,24 @@
 /* eslint-disable no-unused-vars */
-const shop = require('../../models/currencyShop');
+const shop = require('../../models/shopItems.js');
 const inventory = require('../../models/userItems');
 const profileModel = require('../../models/profileSchema');
 
 module.exports = {
   name: 'comprar',
-  aliases: ['b', 'crp'],
+  aliases: ['b', 'cpr'],
   description: '',
   async execute(message, profileData, args) {
     try {
-      const item = await shop.findOne({ name: args[0].toLowerCase() });
-      const cost = (item.cost * args[1]) * -1;
-      const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item.name });
+      const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
+      const cost = (item[0].cost * args[1]) * -1;
+      const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
 
       if (cost > profileData.coins) { return message.reply('Você não tem moedas suficientes!'); }
 
       if (itemValidation) {
-        console.log('AAAAA SEXOOOOO');
         await inventory.findOneAndUpdate({
           user_id: message.author.id,
-          item_name: item.name,
+          item_name: item[0].name,
         },
         {
           $inc: {
@@ -39,11 +38,10 @@ module.exports = {
         message.reply('Você comprou algo!');
       }
       else {
-        console.log('SEXO');
         const inv = await inventory.create({
           user_id: message.author.id,
-          item_id: item.item_id,
-          item_name: item.name,
+          item_id: item[0].item_id,
+          item_name: item[0].name,
           amount: args[1],
         });
         inv.save();

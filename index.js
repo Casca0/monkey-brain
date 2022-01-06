@@ -1,11 +1,10 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 require('dotenv/config');
-const token = process.env['CLIENT_TOKEN'];
+const token = 'ODQwMjIxOTA3NjIyMTY2NTc5.YJVDoQ.7uFimz3_91sX4lg8D3YKrl7GEI8';
 const mongoose = require('mongoose');
-const currencyShop = require('./models/currencyShop');
-const items = require('./models/shopItems');
 
+// CLient init
 
 const client = new Discord.Client({
   intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES'],
@@ -58,25 +57,6 @@ mongoose.connect(process.env.MONGO_TOKEN, {
   console.log(err);
 });
 
-(() => {
-  for (let i = 0; i < items.length; i++) {
-    console.log(items[i].name);
-    (async () => {
-      const shopInfo = await currencyShop.findOne({ item_id: items[i].itemID });
-      if(!shopInfo) {
-        const shop = await currencyShop.create({
-          name: items[i].name,
-          item_id: items[i].itemID,
-          cost: items[i].cost,
-        });
-        shop.save();
-      }
-      else {
-        return console.log('Os itens com estes IDs já estão presentes na loja : \n ID : ' + items[i].itemID + ', ');
-      }
-    })();
-  }
-})();
 
 /*
       __
