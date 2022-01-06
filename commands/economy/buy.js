@@ -12,10 +12,6 @@ module.exports = {
     try {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
       let quantia = args[1];
-      if (quantia === 0) {
-        message.reply('Divisão por 0 detectada, vai tomar no seu cu viu');
-        return;
-      }
       if (typeof quantia != Number || quantia % 1 != 0 || quantia < 0) {
         message.reply('Informe uma quantia válida');
         return;
