@@ -8,13 +8,20 @@ module.exports = {
     if (args[0]) {
       const command = client.help.find(cmd => cmd.name === args[0]);
       if (command) {
+        const alias = command.aliases ? command.aliases.join(', ') : 'Não tem alias';
+
         const embed = new Discord.MessageEmbed({
           title: 'Ajuda ❔',
-          description: command.description + '\n' + `\`${command.usage}\``,
+          description: command.description,
           fields : [{
             name: 'Alias',
-            value: command.alias,
-          }],
+            value: `\`${alias}\``,
+          },
+          {
+            name: 'Uso',
+            value: `\`${command.usage}\``,
+          },
+          ],
           color: '#0f12bd',
         });
         message.channel.send({ embeds: [embed] });
