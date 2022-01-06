@@ -11,7 +11,17 @@ module.exports = {
   async execute(message, profileData, args) {
     try {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
-      const cost = (item[0].cost * args[1]) * -1;
+      let quantia = args[1];
+      if (typeof quantia != Number || quantia % 1 != 0 || quantia < 0) {
+        message.reply('Informe uma quantia válida');
+      }
+      if (quantia === 0) {
+        message.reply('Divisão por 0 detectada, vai tomar no seu cu viu');
+      }
+      if (!args[1]) {
+        return quantia = 1;
+      }
+      const cost = (item[0].cost * quantia) * -1;
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
 
       if (cost > profileData.coins) { return message.reply('Você não tem moedas suficientes!'); }
@@ -23,7 +33,7 @@ module.exports = {
         },
         {
           $inc: {
-            amount: args[1],
+            amount: quantia,
           },
         });
         await profileModel.findOneAndUpdate(

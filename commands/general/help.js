@@ -11,6 +11,10 @@ module.exports = {
         const embed = new Discord.MessageEmbed({
           title: 'Ajuda ❔',
           description: command.description + '\n' + `\`${command.usage}\``,
+          fields : [{
+            name: 'Alias',
+            value: command.alias,
+          }],
           color: '#0f12bd',
         });
         message.channel.send({ embeds: [embed] });

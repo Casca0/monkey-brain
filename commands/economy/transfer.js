@@ -2,13 +2,13 @@ const profileModel = require('../../models/profileSchema');
 module.exports = {
   name: 'transferir',
   aliases: ['tr', 'trade'],
-  description: 'Tranfesre uma quantia para álguem.',
+  description: 'Transfere uma quantia para álguem.',
   usage: '?transferir <quantia> <destinatário>',
   async execute(message, profileData, args) {
     let amount = args[0];
     const user = message.mentions.users.first();
     if (amount === 'all') amount = profileData.coins;
-    if (amount % 1 != 0 || amount <= 0) return message.reply('A transferência tem que ser um número inteiro!\n?tr <quantia> <usuário>');
+    if (amount % 1 != 0 || amount <= 0) return message.reply('A transferência tem que ser um número inteiro!');
     if (user) {
       try {
         const member = message.guild.members.resolve(user);
