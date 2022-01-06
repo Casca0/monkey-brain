@@ -4,7 +4,8 @@ const profileModel = require('../../models/profileSchema');
 module.exports = {
   name: 'saldo',
   aliases: ['sal', 'bal'],
-  description: 'Verifica a carteira do usuário',
+  description: 'Verifica o saldo do usuário',
+  usage:'?saldo <user>',
   async execute(message, profileData) {
     let em = new MessageEmbed()
       .setTitle(`${profileData.walletName}`)

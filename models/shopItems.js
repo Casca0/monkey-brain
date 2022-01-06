@@ -19,7 +19,7 @@ module.exports = { items: [
         },
         {
           $inc: {
-            amount: args[1],
+            amount: +1,
           },
         });
       }
@@ -28,7 +28,7 @@ module.exports = { items: [
           user_id: user.id,
           item_id: this.item_id,
           item_name: this.name,
-          amount: args[1],
+          amount: 1,
         });
         inv.save();
       }

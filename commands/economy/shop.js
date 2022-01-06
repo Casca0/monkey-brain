@@ -5,6 +5,7 @@ module.exports = {
   name: 'shop',
   aliases: ['s'],
   description: 'Mostra a loja.',
+  usage: '?shop',
   // eslint-disable-next-line no-unused-vars
   async execute(message, profileData, args) {
     try {

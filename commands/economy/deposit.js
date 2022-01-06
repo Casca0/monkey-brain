@@ -3,6 +3,7 @@ module.exports = {
   name: 'depositar',
   aliases: ['dep'],
   description: 'Deposita dinheiro no seu banco.',
+  usage: '?depositar <quantia>',
   async execute(message, profileData, args) {
     let amount = args[0];
     if (amount === 'all') amount = profileData.coins;

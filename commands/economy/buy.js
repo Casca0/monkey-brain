@@ -6,7 +6,8 @@ const profileModel = require('../../models/profileSchema');
 module.exports = {
   name: 'comprar',
   aliases: ['b', 'cpr'],
-  description: '',
+  description: 'Compra um produto da loja.',
+  usage: '?comprar <produto> <quantia>',
   async execute(message, profileData, args) {
     try {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });

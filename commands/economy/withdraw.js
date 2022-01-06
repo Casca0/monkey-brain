@@ -3,6 +3,7 @@ module.exports = {
   name: 'retirar',
   aliases: ['rt'],
   description: 'Retira dinheiro do seu banco.',
+  usage: '?retirar <quantia do seu banco>',
   async execute(message, profileData, args) {
     let amount = args[0];
     if (amount === 'all') amount = profileData.bank;

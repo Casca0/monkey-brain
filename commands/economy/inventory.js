@@ -2,7 +2,9 @@
 const items = require('../../models/userItems');
 module.exports = {
   name: 'inventario',
-  aliases: ['inv'],
+  aliases: ['inv', 'i'],
+  description: 'Mostra seu inventário.',
+  usage: '?inventario',
   async execute(message, profileData, args) {
     try {
       const all = await items.find({ user_id: message.author.id });

@@ -4,6 +4,7 @@ module.exports = {
   name: 'cor',
   aliases: ['cr'],
   description: 'Muda a cor da carteira do usuário',
+  usage: '?cor <código hex>',
   async execute(message, profileData, args) {
     const color = args[0];
     const RegExp = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;

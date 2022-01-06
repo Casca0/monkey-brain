@@ -1,5 +1,7 @@
 module.exports = {
   name:'bonk',
+  description: 'Dê bonk em alguém (ADMIN).',
+  usage: '?bonk <user>',
   execute(message) {
     const user = message.mentions.users.first();
     if(user) {
