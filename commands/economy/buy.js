@@ -76,4 +76,5 @@ module.exports = {
       return message.reply('Deu ruim meu nobre');
     }
   },
+  // SEXO
 };
