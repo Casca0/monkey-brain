@@ -24,6 +24,7 @@ module.exports = {
               })),
             ),
             color: '#0da31c',
+            thumbnail: user.avatarURL(),
           });
           message.reply({ embeds: [inv] });
         }
@@ -43,6 +44,7 @@ module.exports = {
               })),
             ),
             color: '#0da31c',
+            thumbnail: message.author.avatarURL(),
           });
           message.reply({ embeds: [inv] });
         }
