@@ -49,7 +49,7 @@ module.exports = {
       else {
         const inv = await inventory.create({
           user_id: message.author.id,
-          item_id: item[0].item_id,
+          item_id: item[0].itemID,
           item_name: item[0].name,
           amount: args[1],
         });
