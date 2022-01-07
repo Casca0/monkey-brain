@@ -12,7 +12,7 @@ module.exports = {
         message.reply('Seu inventário está vazio!');
       }
       else {
-        const useCase = userItems.useDescription ? userItems.useDescription : 'Não há como usar.';
+        const useCase = userItems.item_useDescription ? userItems.item_useDescription : 'Não há como usar.';
         const inv = new Discord.MessageEmbed({
           title: 'Inventário 🎒',
           fields: await Promise.all(
@@ -21,6 +21,7 @@ module.exports = {
               value: useCase,
             })),
           ),
+          color: '#0da31c',
         });
         message.reply({ embeds: [inv] });
       }

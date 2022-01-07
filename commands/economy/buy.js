@@ -54,7 +54,7 @@ module.exports = {
           user_id: message.author.id,
           item_id: item[0].itemID,
           item_name: item[0].name,
-          item_description: itemUse,
+          item_useDescription: itemUse,
           amount: quantia,
         });
         inv.save();
