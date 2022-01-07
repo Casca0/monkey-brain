@@ -22,7 +22,6 @@ module.exports = {
       }
       const item = shop.items.filter(items => { return items.name == args.join(' ').toLowerCase(); });
       const itemUse = item[0].useDescription ? item[0].useDescription : 'Não há uso.';
-      console.log(itemUse);
       const cost = (item[0].cost * quantia) * -1;
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
 
@@ -55,7 +54,7 @@ module.exports = {
           user_id: message.author.id,
           item_id: item[0].itemID,
           item_name: item[0].name,
-          item_useDescription: itemUse,
+          item_description: itemUse,
           amount: quantia,
         });
         inv.save();
@@ -69,7 +68,7 @@ module.exports = {
             },
           },
         );
-        message.reply(`Você comprou \`${item[0].name}\` e pagou \`BR${cost}\``);
+        message.reply(`Você comprou \`${item[0].name}\` e pagou \`BR${cost * -1}\``);
       }
     }
     catch (err) {
