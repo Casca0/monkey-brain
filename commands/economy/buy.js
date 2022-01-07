@@ -13,7 +13,7 @@ module.exports = {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
       let quantia = args[1];
       if (!args[1]) {
-        return quantia = 1;
+        quantia = 1;
       }
       if (typeof quantia != Number || quantia % 1 != 0 || quantia < 0) {
         message.reply('Informe uma quantia válida');
