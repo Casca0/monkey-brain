@@ -15,7 +15,7 @@ module.exports = {
       if (!args[1]) {
         quantia = 1;
       }
-      if (typeof quantia != Number || quantia % 1 != 0 || quantia < 0) {
+      if (quantia % 1 != 0 || quantia < 0) {
         message.reply('Informe uma quantia válida');
         return;
       }
