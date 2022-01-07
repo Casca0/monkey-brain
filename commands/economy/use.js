@@ -11,7 +11,8 @@ module.exports = {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
       if (itemValidation.amount === 1) {
-        inventory.findOneAndDelete({ user_id: message.author.id, item_name: item[0].name });
+        item[0].use(message, args, profileData);
+        await inventory.deleteOne({ user_id: message.author.id, item_name: item[0].name });
       }
       else if (itemValidation) {
         item[0].use(message, args, profileData);

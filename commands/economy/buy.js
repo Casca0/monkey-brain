@@ -14,14 +14,14 @@ module.exports = {
       if (isNaN(parseInt(args[args.length - 1]))) {
         quantia = 1;
       }
-      else if (parseInt(args[args.length - 1]) <= 0) {
+      if (parseInt(args[args.length - 1]) <= 0) {
         return message.reply('Informe uma quantia válida');
       }
       else {
         quantia = args.pop();
       }
       const item = shop.items.filter(items => { return items.name == args.join(' ').toLowerCase(); });
-      const itemUse = item[0].useDescription ? item[0].useDescription : 'Não há uso.';
+      const itemUse = item[0].useDescription == '' ? 'Não há uso.' : item[0].useDescription;
       const cost = (item[0].cost * quantia) * -1;
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
 
