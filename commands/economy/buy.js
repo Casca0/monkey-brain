@@ -8,22 +8,53 @@ module.exports = {
   aliases: ['b', 'cpr'],
   description: 'Compra um produto da loja.',
   usage: '?comprar <produto> <quantia>',
-  async execute(message, profileData, args) {
+  async execute(message, profileData, args, Discord) {
     try {
-      let quantia;
-      if (isNaN(parseInt(args[args.length - 1]))) {
-        quantia = 1;
+
+      // Quantity validation
+
+      let qtn;
+      const qntValidation = isNaN(parseInt(args[args.length - 1]));
+      if (qntValidation == true) {
+        qtn = 1;
+      }
+      else {
+        qtn = args.pop();
       }
       if (parseInt(args[args.length - 1]) <= 0) {
         return message.reply('Informe uma quantia válida');
       }
-      else {
-        quantia = args.pop();
-      }
+
+      // Constants declarition
+
       const item = shop.items.filter(items => { return items.name == args.join(' ').toLowerCase(); });
       const itemUse = item[0].useDescription == '' ? 'Não há uso.' : item[0].useDescription;
-      const cost = (item[0].cost * quantia) * -1;
+      const cost = (item[0].cost * qtn) * -1;
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
+      const receipt = new Discord.MessageEmbed({
+        title: 'Recibo',
+        fields: [
+          {
+            name: 'Item',
+            value: `\`${item[0].name}\``,
+          },
+          {
+            name: 'Quantia',
+            value: `\`${qtn}\``,
+          },
+          {
+            name: 'Valor total',
+            value: `\`BR ${cost * -1}\``,
+          },
+        ],
+        color: '#ffffff',
+        footer: {
+          text: 'Muito obrigado por sua compra!',
+          icon_url: message.author.avatarURL(),
+        },
+      });
+
+      // Item and cost validation
 
       if (cost > profileData.coins) { return message.reply('Você não tem moedas suficientes!'); }
 
@@ -34,7 +65,7 @@ module.exports = {
         },
         {
           $inc: {
-            amount: quantia,
+            amount: qtn,
           },
         });
         await profileModel.findOneAndUpdate(
@@ -47,7 +78,7 @@ module.exports = {
             },
           },
         );
-        message.reply('Você comprou algo!');
+        message.reply({ embeds: [receipt] });
       }
       else {
         const inv = await inventory.create({
@@ -55,7 +86,7 @@ module.exports = {
           item_id: item[0].itemID,
           item_name: item[0].name,
           item_useDescription: itemUse,
-          amount: quantia,
+          amount: qtn,
         });
         inv.save();
         await profileModel.findOneAndUpdate(
@@ -68,7 +99,7 @@ module.exports = {
             },
           },
         );
-        message.reply(`Você comprou \`${item[0].name}\` e pagou \`BR${cost * -1}\``);
+        message.reply({ embeds: [receipt] });
       }
     }
     catch (err) {
@@ -76,5 +107,4 @@ module.exports = {
       return message.reply('Deu ruim meu nobre');
     }
   },
-  // SEXO
 };

@@ -8,8 +8,7 @@ module.exports = {
   async execute(message, profileData, args) {
     const name = args.join(' ');
     if(args[0]) {
-      // eslint-disable-next-line no-unused-vars
-      const response = await profileModel.findOneAndUpdate(
+      await profileModel.findOneAndUpdate(
         {
           userID: message.author.id,
         },
