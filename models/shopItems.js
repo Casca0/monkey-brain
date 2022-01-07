@@ -37,17 +37,17 @@ module.exports = { items: [
     },
   },
   {
-    'name': 'Anão granada',
+    'name': 'anão granada',
     'itemID': 2,
     'cost': 50000,
   },
   {
-    'name': 'Calcinha de renda preta',
+    'name': 'calcinha de renda preta',
     'itemID': 3,
     'cost': 5000,
   },
   {
-    'name': 'Calcinha de renda vermelha',
+    'name': 'calcinha de renda vermelha',
     'itemID': 4,
     'cost': 8000,
   },

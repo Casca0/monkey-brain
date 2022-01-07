@@ -10,15 +10,19 @@ module.exports = {
   usage: '?comprar <produto> <quantia>',
   async execute(message, profileData, args) {
     try {
-      const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
-      let quantia = args[1];
-      if (!args[1]) {
+      let quantia;
+      if (isNaN(parseInt(args[args.length - 1]))) {
         quantia = 1;
       }
-      if (quantia % 1 != 0 || quantia < 0) {
-        message.reply('Informe uma quantia válida');
-        return;
+      else if (parseInt(args[args.length - 1]) <= 0) {
+        return message.reply('Informe uma quantia válida');
       }
+      else {
+        quantia = args.pop();
+      }
+      const item = shop.items.filter(items => { return items.name == args.join(' ').toLowerCase(); });
+      const itemUse = item[0].useDescription ? item[0].useDescription : 'Não há uso.';
+      console.log(itemUse);
       const cost = (item[0].cost * quantia) * -1;
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
 
@@ -51,7 +55,8 @@ module.exports = {
           user_id: message.author.id,
           item_id: item[0].itemID,
           item_name: item[0].name,
-          amount: args[1],
+          item_useDescription: itemUse,
+          amount: quantia,
         });
         inv.save();
         await profileModel.findOneAndUpdate(
@@ -64,7 +69,7 @@ module.exports = {
             },
           },
         );
-        message.reply('Você comprou algo!');
+        message.reply(`Você comprou \`${item[0].name}\` e pagou \`BR${cost}\``);
       }
     }
     catch (err) {

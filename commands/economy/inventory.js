@@ -5,20 +5,28 @@ module.exports = {
   aliases: ['inv', 'i'],
   description: 'Mostra seu inventário.',
   usage: '?inventario',
-  async execute(message, profileData, args) {
+  async execute(message, profileData, args, Discord) {
     try {
       const userItems = await items.find({ user_id: message.author.id });
-      if (!userItems) {
+      if (userItems == '') {
         message.reply('Seu inventário está vazio!');
       }
       else {
-        const inv = userItems.map(i => `${i.amount} ${i.item_name.charAt(0).toUpperCase() + i.item_name.slice(1)}`).join(', ');
-        message.reply(inv);
+        const useCase = userItems.useDescription ? userItems.useDescription : 'Não há como usar.';
+        const inv = new Discord.MessageEmbed({
+          title: 'Inventário 🎒',
+          fields: await Promise.all(
+            userItems.map(async item => ({
+              name: item.item_name.charAt(0).toUpperCase() + item.item_name.slice(1),
+              value: useCase,
+            })),
+          ),
+        });
+        message.reply({ embeds: [inv] });
       }
     }
     catch (err) {
       console.log(err);
-      message.reply('Seu inventário está vazio!');
       return;
     }
   },

@@ -6,7 +6,7 @@ module.exports = {
   async execute(message, client, Discord) {
     if (!message.content.startsWith(prefix)) return;
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/);
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
 
     if (!client.commands.has(commandName)) return;

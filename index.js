@@ -1,7 +1,8 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 require('dotenv/config');
-const token = process.env['CLIENT_TOKEN'];
+// const token = process.env['CLIENT_TOKEN'];
+const token = 'ODQwMjIxOTA3NjIyMTY2NTc5.YJVDoQ.yyej2tNeZ7QiHiQuNRuXzq-6R7A';
 const mongoose = require('mongoose');
 
 // CLient init
@@ -50,7 +51,7 @@ for(const file of eventFiles) {
 
 // Database
 
-mongoose.connect(process.env.MONGO_TOKEN, {
+mongoose.connect('mongodb+srv://Casca0:LmzIZGSplKCq5EAi@cluster0.pbfid.mongodb.net/MonekyBrainDB?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
