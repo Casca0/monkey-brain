@@ -12,12 +12,12 @@ module.exports = {
     try {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
       let quantia = args[1];
+      if (!args[1]) {
+        return quantia = 1;
+      }
       if (typeof quantia != Number || quantia % 1 != 0 || quantia < 0) {
         message.reply('Informe uma quantia válida');
         return;
-      }
-      if (!args[1]) {
-        return quantia = 1;
       }
       const cost = (item[0].cost * quantia) * -1;
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
