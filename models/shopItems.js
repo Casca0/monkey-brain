@@ -41,4 +41,14 @@ module.exports = { items: [
     'itemID': 2,
     'cost': 50000,
   },
+  {
+    'name': 'Calcinha de renda preta',
+    'itemID': 3,
+    'cost': 5000,
+  },
+  {
+    'name': 'Calcinha de renda vermelha',
+    'itemID': 4,
+    'cost': 8000,
+  },
 ] };
