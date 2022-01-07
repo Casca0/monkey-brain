@@ -19,7 +19,7 @@ module.exports = {
           },
           {
             name: 'Uso',
-            value: `\`${command.usage}\``,
+            value: `\`${command.usage ? command.usage : 'Não possui uso específico.'}\``,
           },
           ],
           color: '#0f12bd',
@@ -56,7 +56,7 @@ module.exports = {
           fields: await Promise.all(
             current.map(async cmdName => ({
               name: cmdName.name,
-              value: cmdName.description,
+              value: cmdName.description ? cmdName.description : 'Não possui descrição.',
             })),
           ),
           color: '#0f12bd',
