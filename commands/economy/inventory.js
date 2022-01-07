@@ -11,8 +11,10 @@ module.exports = {
       if (!userItems) {
         message.reply('Seu inventário está vazio!');
       }
-      const inv = userItems.map(i => `${i.amount} ${i.item_name.charAt(0).toUpperCase() + i.item_name.slice(1)}`).join(', ');
-      message.reply(inv);
+      else {
+        const inv = userItems.map(i => `${i.amount} ${i.item_name.charAt(0).toUpperCase() + i.item_name.slice(1)}`).join(', ');
+        message.reply(inv);
+      }
     }
     catch (err) {
       console.log(err);
