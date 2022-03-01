@@ -12,7 +12,7 @@ module.exports = {
     const newUsers = new Collection();
     const emoji = member.guild.emojis.cache.find(emj => emj.name == 'hmm');
     newUsers.set(member.id, member.user);
-    const defaultChannel = guild.channels.cache.get('808458807209361438');
+    const defaultChannel = guild.channels.cache.get(guild.systemChannelId);
     const userList = newUsers.map(u => u.toString()).join(' ');
     const em = new MessageEmbed()
       .setColor('#f0f714')

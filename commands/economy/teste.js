@@ -8,8 +8,18 @@ module.exports = {
   async execute(message, profileData, args) {
     if (message.member.permissions.has('ADMINISTRATOR')) {
       try {
-       const teste = message.member.roles.cache.find((role) => {role == '829091854842724372';});
-       console.log(message.member.permissions.has('ADMINISTRATOR'));
+				let timeAmount;
+				const amntValidation = isNaN(parseInt(args[0]));
+				if (amntValidation == true) {
+					timeAmount = 1;
+				}
+				else {
+					timeAmount = args.shift() * 60000;
+				}
+
+				console.log(timeAmount);
+				const reason = args.join(' ');
+				console.log(reason);
       }
       catch (err) {
         console.log(err);

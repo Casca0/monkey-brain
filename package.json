@@ -6,9 +6,18 @@
     "node": "16.x"
   },
   "main": "index.js",
+  "_cmd-update-all-modules": "npm run update-all-modules",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "start": "node .",
+    "create-global-node-modules-folder": "if not exist \"%appdata%\\npm\\node_modules\" mkdir %appdata%\\npm\\node_modules",
+    "npm-i-g": "npm i npm@latest -g",
+    "npm-check-i-g": "npm i npm-check@latest -g",
+    "npm-check-u-l": "npm-check \"C:\\Program Files\\nodejs\\node_modules\\npm\" -y",
+    "npm-check-u-g": "npm-check \"C:\\Program Files\\nodejs\\node_modules\\npm\" -y -g",
+    "npm-deep-update-l": "npm update --depth 9999 --dev",
+    "npm-deep-update-g": "npm update --depth 9999 --dev -g",
+    "npm-cache-clear": "npm cache clear --force",
+    "update-all-modules": "npm run create-global-node-modules-folder && npm run npm-i-g && npm run npm-check-i-g && npm run npm-check-u-l && npm run npm-check-u-g && npm run npm-deep-update-l && npm run npm-deep-update-g && npm run npm-cache-clear"
   },
   "repository": {
     "type": "git",
@@ -22,13 +31,13 @@
   "homepage": "https://github.com/Casca0/discord-bot#readme",
   "dependencies": {
     "ansi-regex": "^6.0.1",
-    "discord.js": "^13.5.0",
-    "dotenv": "^10.0.0",
-    "mongoose": "^6.0.5",
-    "nodemon": "^2.0.12",
-    "npm": "^7.21.0"
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.2.1",
+    "nodemon": "^2.0.15",
+    "npm": "^8.5.0"
   },
   "devDependencies": {
-    "eslint": "^7.26.0"
+    "eslint": "^8.8.0"
   }
 }

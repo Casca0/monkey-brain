@@ -20,9 +20,9 @@ client.login(token);
 
 const commandFolders = fs.readdirSync('./commands');
 
-for(const folder of commandFolders) {
+for (const folder of commandFolders) {
   const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
-  for(const file of commandFiles) {
+  for (const file of commandFiles) {
     const command = require(`./commands/${folder}/${file}`);
     client.commands.set(command.name, command);
     client.help.set(command.name, command);
@@ -38,9 +38,9 @@ for(const folder of commandFolders) {
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
-for(const file of eventFiles) {
+for (const file of eventFiles) {
   const event = require(`./events/${file}`);
-  if(event.once) {
+  if (event.once) {
     client.once(event.name, (...args) => event.execute(...args, client));
   }
   else {

@@ -11,7 +11,7 @@ module.exports = {
   async execute(message, profileData, args, Discord) {
     try {
 
-      // Quantity validation
+      // Validação de quantidade
 
       let qtn;
       const qntValidation = isNaN(parseInt(args[args.length - 1]));
@@ -25,7 +25,7 @@ module.exports = {
         return message.reply('Informe uma quantia válida');
       }
 
-      // Constants declarition
+      // Declarão de variáveis
 
       const item = shop.items.filter(items => { return items.name == args.join(' ').toLowerCase(); });
       const itemUse = item[0].useDescription == '' ? 'Não há uso.' : item[0].useDescription;
@@ -54,7 +54,7 @@ module.exports = {
         },
       });
 
-      // Item and cost validation
+      // Validação de item e valor
 
       if (cost > profileData.coins) { return message.reply('Você não tem moedas suficientes!'); }
 
