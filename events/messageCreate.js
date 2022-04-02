@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
 const { prefix } = require('../config.json');
 const profileModel = require('../models/profileSchema');
+
 module.exports = {
   name:'messageCreate',
   async execute(message, client, Discord) {
@@ -23,7 +23,7 @@ module.exports = {
 
     const now = Date.now();
     const timestamps = cooldowns.get(command.name);
-    const cooldownAmount = (command.cooldown || 3) * 1000;
+    const cooldownAmount = command.cooldown || 3;
 
     if (timestamps.has(message.author.id)) {
       const expirationTime = timestamps.get(message.author.id) + cooldownAmount;

@@ -12,7 +12,7 @@ module.exports = { items: [
       const user = message.guild.members.cache.random().user;
       const itemValidation = await inventory.findOne({ user_id: user.id, item_name: 'banana' });
 
-      if(itemValidation) {
+      if (itemValidation) {
         await inventory.findOneAndUpdate({
           user_id: user.id,
           item_name: 'banana',

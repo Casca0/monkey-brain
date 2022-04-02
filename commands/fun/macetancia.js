@@ -3,7 +3,6 @@ const { MessageEmbed } = require('discord.js');
 const { macetaVibes, macetaVisions, macetaColor } = require('./macetanciaMoves.json');
 const profileModel = require('../../models/profileSchema');
 
-
 module.exports = {
   name: 'macetancia',
 	cooldown: 160,
@@ -98,7 +97,6 @@ module.exports = {
             .setColor(`${color}`)
             .setImage(`${visions}`);
           message.channel.send({ embeds: [em] });
-
           counter = await profileModel.findOneAndUpdate(
             {
               userID: message.author.id,

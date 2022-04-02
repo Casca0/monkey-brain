@@ -7,7 +7,7 @@ module.exports = {
   usage: '?carteira <novo nome>',
   async execute(message, profileData, args) {
     const name = args.join(' ');
-    if(args[0]) {
+    if (args[0]) {
       await profileModel.findOneAndUpdate(
         {
           userID: message.author.id,

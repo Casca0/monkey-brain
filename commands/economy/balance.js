@@ -19,7 +19,7 @@ module.exports = {
     // Se marcar um usuário, mostrar a carteira dele.
 
     const user = message.mentions.users.first();
-    if(user) {
+    if (user) {
       const member = message.guild.members.resolve(user);
       const userBal = await profileModel.findOne({ userID: member.id });
       if (!userBal) {
@@ -30,8 +30,8 @@ module.exports = {
         .setColor(userBal.walletColor)
         .setDescription('WIP')
         .setThumbnail(user.displayAvatarURL({ dynamic: true }))
-        .addField('Carteira', `:dollar: \nBR ${userBal.coins}`)
-        .addField('Banco', `:coin: \nBR ${userBal.bank}`)
+        .addField('Carteira', `:dollar: BR ${userBal.coins}`)
+        .addField('Banco', `:coin: BR ${userBal.bank}`)
         .addField('Contador Macetância', `:monkey: ${userBal.macetanciaCounter}`);
       return message.reply({ embeds: [em] });
     }

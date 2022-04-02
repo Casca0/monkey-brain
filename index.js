@@ -9,10 +9,12 @@ const mongoose = require('mongoose');
 const client = new Discord.Client({
   intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES'],
 });
+
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.help = new Discord.Collection();
+client.shopItems = new Discord.Collection();
 
 client.login(token);
 
@@ -54,11 +56,10 @@ mongoose.connect(process.env.MONGO_TOKEN, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
-  console.log('AAAAAAAAAAA CONECTEI AO BANCO MIZERA');
+  console.log('Conectei ao banco de dados!');
 }).catch((err) => {
   console.log(err);
 });
-
 
 /*
       __
@@ -71,5 +72,4 @@ mongoose.connect(process.env.MONGO_TOKEN, {
 
 GOD MARCELO HERE
 I'M WATCHING YOU
-
 */
