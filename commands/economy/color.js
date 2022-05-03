@@ -4,6 +4,7 @@ module.exports = {
   name: 'cor',
   aliases: ['cr'],
   description: 'Muda a cor da carteira do usuário',
+	category: 'economy',
   usage: '?cor <código hex>',
   async execute(message, profileData, args) {
     const color = args[0];

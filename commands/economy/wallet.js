@@ -4,6 +4,7 @@ module.exports = {
   name: 'carteira',
   aliases: ['c'],
   description: 'Muda o nome da carteira do usuário',
+	category: 'economy',
   usage: '?carteira <novo nome>',
   async execute(message, profileData, args) {
     const name = args.join(' ');

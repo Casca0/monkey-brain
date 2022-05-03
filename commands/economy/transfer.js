@@ -3,6 +3,7 @@ module.exports = {
   name: 'transferir',
   aliases: ['tr', 'trade'],
   description: 'Transfere uma quantia para álguem.',
+	category: 'economy',
   usage: '?transferir <quantia> <destinatário>',
   async execute(message, profileData, args) {
     let amount = args[0];

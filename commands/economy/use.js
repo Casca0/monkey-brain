@@ -5,6 +5,7 @@ module.exports = {
   name: 'use',
   aliases: ['u'],
   description: 'Usa um item.',
+	category: 'economy',
   usage: '?use <item> <user se necessário>',
   async execute(message, profileData, args) {
     try {

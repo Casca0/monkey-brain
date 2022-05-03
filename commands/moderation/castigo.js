@@ -1,6 +1,7 @@
 module.exports = {
 	name:'castigo',
 	description: 'Coloque alguém de castigo (ADMIN).',
+	category: 'moderation',
 	aliases: ['ct'],
 	usage: '?castigo <tempo_de_castigo> <motivo> <user>',
 	execute(message, profileData, args) {

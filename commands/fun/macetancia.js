@@ -8,6 +8,7 @@ module.exports = {
 	cooldown: 160,
   aliases: ['maceta', 'mct'],
   description: 'Macete um usuário aleatório e ganhe Bananas Reias por isso!',
+	category: 'fun',
   usage: '?macetancia',
   async execute(message) {
     await message.guild.members.fetch();

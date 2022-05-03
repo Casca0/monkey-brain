@@ -5,6 +5,7 @@ module.exports = {
   name: 'inventario',
   aliases: ['inv', 'i'],
   description: 'Mostra seu inventário.',
+	category: 'economy',
   usage: '?inventario <user>',
   async execute(message, profileData, args, Discord) {
     try {
