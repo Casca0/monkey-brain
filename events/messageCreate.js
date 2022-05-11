@@ -1,9 +1,10 @@
-const { prefix } = require('../config.json');
+const commandPrefix = require('../models/prefix');
 const profileModel = require('../models/profileSchema');
 
 module.exports = {
   name:'messageCreate',
   async execute(message, client, Discord) {
+    const prefix = await commandPrefix.findOne().then((result) => result.prefix);
     if (!message.content.startsWith(prefix)) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
