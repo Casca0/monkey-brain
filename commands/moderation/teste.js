@@ -15,49 +15,22 @@ module.exports = {
   async execute(message, profileData, args, Discord, client) {
     if (message.member.permissions.has('ADMINISTRATOR')) {
       try {
-				const categoryButtonGeneral = new Discord.MessageButton({
-					style: 'SECONDARY',
-					label: 'Geral',
-					emoji: '⚙',
-					customId: 'general',
-				});
-
-				const categoryButtonEconomy = new Discord.MessageButton({
-					style: 'SECONDARY',
-					label: 'Economia',
-					emoji: '💰',
-					customId: 'economy',
-				});
-
-				const categoryButtonModeration = new Discord.MessageButton({
-					style: 'SECONDARY',
-					label: 'Administração',
-					emoji: '🦧',
-					customId: 'moderation',
-				});
-
-				const testMessage = new Discord.MessageEmbed({
-					title: 'teste',
-					color: '#0f12bd',
-				});
-
-				const sendMessage = await message.channel.send({
-					embeds: [testMessage],
-					components: [new Discord.MessageActionRow({
-						components: [categoryButtonGeneral, categoryButtonEconomy, categoryButtonModeration],
-					})],
-				});
-
-				const collector = sendMessage.createMessageComponentCollector();
-				const testEmbed = new Discord.MessageEmbed({
-					title: 'sexo',
-					color:'#0f1',
-					description: 'sexo',
-				});
-
-				collector.on('collect', async interaction => {
-					console.log(interaction);
-				});
+				const user = message.mentions.users.first();
+				const userEmbed = new Discord.MessageEmbed({
+          title: 'MARTELADO PELO MACACÃO',
+          description: 'Mas você ainda não está fora da luta!',
+          fields: [
+            {
+              name: 'Convite',
+              value: 'https://discord.gg/g2ewSK3PgB',
+            },
+          ],
+          image: {
+            url: 'https://c.tenor.com/mmGA03N6xHIAAAAM/donkey-kong-banana.gif',
+					},
+					color: '#f5e942',
+        });
+				user.send({ embeds: [userEmbed] });
       }
       catch (err) {
         console.log(err);

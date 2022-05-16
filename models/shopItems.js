@@ -55,4 +55,41 @@ module.exports = { items: [
     'cost': 8000,
     'useDescription': '',
   },
+  {
+    'name': 'martelo do macaco',
+    'itemID': 5,
+    'cost': 150000,
+    'useDescription': 'Dê uma martelada em outro macaco a sua escolha',
+    'use': async (message, args, profileData, Discord) => {
+      const user = message.mentions.users.first();
+      if (user) {
+        const member = message.guild.members.resolve(user);
+        const embed = new Discord.MessageEmbed({
+          title: 'BONK!',
+          description: `${user}`,
+          image: {
+            url: 'https://c.tenor.com/Xr8J9quvUHgAAAAd/bonk.gif',
+          },
+          color: '#03fc0f',
+        });
+				const userEmbed = new Discord.MessageEmbed({
+          title: 'MARTELADO PELO MACACÃO',
+          description: 'Mas você ainda não está fora da luta!',
+          fields: [
+            {
+              name: 'Convite',
+              value: 'https://discord.gg/g2ewSK3PgB',
+            },
+          ],
+          image: {
+            url: 'https://c.tenor.com/mmGA03N6xHIAAAAM/donkey-kong-banana.gif',
+					},
+					color: '#f5e942',
+        });
+        message.channel.send({ embeds: [embed] });
+        user.send({ embeds: [userEmbed] });
+        member.kick();
+      }
+    },
+  },
 ] };

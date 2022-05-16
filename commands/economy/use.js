@@ -7,7 +7,7 @@ module.exports = {
   description: 'Usa um item.',
 	category: 'economy',
   usage: '?use <item> <user se necessário>',
-  async execute(message, profileData, args) {
+  async execute(message, profileData, args, Discord) {
     try {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });
@@ -16,7 +16,7 @@ module.exports = {
         await inventory.deleteOne({ user_id: message.author.id, item_name: item[0].name });
       }
       else if (itemValidation) {
-        item[0].use(message, args, profileData);
+        item[0].use(message, args, profileData, Discord);
         await inventory.findOneAndUpdate({
           user_id: message.author.id,
           item_name: item[0].name,
