@@ -59,7 +59,7 @@ module.exports = { items: [
     'name': 'martelo do macaco',
     'itemID': 5,
     'cost': 150000,
-    'useDescription': 'Dê uma martelada em outro macaco a sua escolha',
+    'useDescription': 'Dê uma martelada em outro macaco a sua escolha!',
     'use': async (message, args, profileData, Discord) => {
       const user = message.mentions.users.first();
       if (user) {
