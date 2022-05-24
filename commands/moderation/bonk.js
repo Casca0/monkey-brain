@@ -5,6 +5,10 @@ module.exports = {
   usage: '?bonk <user>',
   execute(message) {
     const user = message.mentions.users.first();
+    if (message.channel.type == 'DM') {
+      message.reply('Este comando não pode ser executado no chat privado!');
+      return;
+    }
     if (user) {
       const member = message.guild.members.resolve(user);
       if (message.member.permissions.has('ADMINISTRATOR')) {

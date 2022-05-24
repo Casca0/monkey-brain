@@ -8,6 +8,10 @@ module.exports = {
   usage: '?prefix <novo prefixo>',
   async execute(message, profileData, args) {
     const prefix = await commandPrefix.findOne().then(result => result.prefix);
+    if (message.channel.type == 'DM') {
+      message.reply('Este comando não pode ser executado no chat privado!');
+      return;
+    }
     if (args[0]) {
       if (message.member.permissions.has('ADMINISTRATOR')) {
         try {

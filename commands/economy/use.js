@@ -8,6 +8,10 @@ module.exports = {
 	category: 'economy',
   usage: '?use <item> <user se necessário>',
   async execute(message, profileData, args, Discord) {
+    if (message.channel.type == 'DM') {
+      message.reply('Este comando não pode ser executado no chat privado!');
+      return;
+    }
     try {
       const item = shop.items.filter(items => { return items.name == args[0].toLowerCase(); });
       const itemValidation = await inventory.findOne({ user_id: message.author.id, item_name: item[0].name });

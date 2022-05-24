@@ -4,10 +4,11 @@ require('dotenv/config');
 const token = process.env['CLIENT_TOKEN'];
 const mongoose = require('mongoose');
 
-// CLient init
+// Client init
 
 const client = new Discord.Client({
-  intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES'],
+  intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES'],
+  partials: ['CHANNEL'],
 });
 
 client.commands = new Discord.Collection();

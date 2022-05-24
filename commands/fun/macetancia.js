@@ -11,6 +11,10 @@ module.exports = {
 	category: 'fun',
   usage: '?macetancia',
   async execute(message) {
+    if (message.channel.type == 'DM') {
+      message.reply('Este comando não pode ser executado no chat privado!');
+      return;
+    }
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
 
