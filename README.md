@@ -14,21 +14,25 @@ Este bot está sendo criado com o objetivo de divertimento dentro do meu servido
 
 # Rodando o projeto
 
-Primeiro instalamos as dependências do repositório :
-```bash
-$ npm install
-```
-A partir daqui podemos usar multiplos comandos.
+<details>
+  Primeiro instalamos as dependências do repositório :
+  
+  ```bash
+  $ npm install
+  ```
+  A partir daqui podemos usar multiplos comandos.
 
-Para rodar um ambiente local sem a atualização dinâmica de código :
-```bash
-$ npm start
-```
+  Para rodar um ambiente local sem a atualização dinâmica de código :
 
-Para rodar um ambiente local com atualização dinâmica de código :
-```bash
-$ nodemon .
-```
+  ```bash
+  $ npm start
+  ```
 
-É necessário a criação de um arquivo `.env` com as variáveis de ambiente como `DISCORD_TOKEN` e `MONGO_TOKEN` para rodar corretamente o bot.
+  Para rodar um ambiente local com atualização dinâmica de código :
 
+  ```bash
+  $ nodemon .
+  ```
+
+  É necessário a criação de um arquivo `.env` com as variáveis de ambiente como `DISCORD_TOKEN` e `MONGO_TOKEN` para rodar corretamente o bot.
+</details>

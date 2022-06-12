@@ -74,7 +74,7 @@ module.exports = { items: [
         });
 				const userEmbed = new Discord.MessageEmbed({
           title: 'MARTELADO PELO MACACÃO',
-          description: 'Mas você ainda não está fora da luta!',
+          description: 'Mas você ainda não está fora da selva!',
           fields: [
             {
               name: 'Convite',

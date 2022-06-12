@@ -9,7 +9,8 @@ const job = schedule.scheduleJob(time, () => {
 module.exports = {
   name: 'teste',
   aliases: ['t'],
-	cooldown: Date.parse(job.nextInvocation().toISOString()) - Date.now(),
+  cooldown: 0,
+	// cooldown: Date.parse(job.nextInvocation().toISOString()) - Date.now(),
   description: 'Comando para testar funções do bot (ADMIN)',
 	category: 'moderation',
   async execute(message, profileData, args, Discord, client) {
