@@ -2,7 +2,7 @@
 
 Este bot está sendo criado com o objetivo de divertimento dentro do meu servidor no discord, usando tecnologias como `heroku`, `MongoDB` e `NodeJS`.
 
-![Versão Node](https://img.shields.io/badge/Node-16.9.1-brightgreen?style=flat-square&logo=nodedotjs&logoColor=white)
+![Versão Node](https://img.shields.io/badge/Node-LTS-brightgreen?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Versão Discord.js](https://img.shields.io/badge/Discord.js-13.6.0-blue?style=flat-square&logo=discord&logoColor=white)
 [![GitHub stars](https://img.shields.io/github/stars/Casca0/monkeybrain?label=Stars&logo=github&logoColor=white&style=flat-square)](https://github.com/Casca0/monkeybrain/stargazers)
 
