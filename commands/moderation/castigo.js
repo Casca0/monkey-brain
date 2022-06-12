@@ -1,10 +1,15 @@
 module.exports = {
 	name:'castigo',
 	description: 'Coloque alguém de castigo (ADMIN).',
+	category: 'moderation',
 	aliases: ['ct'],
 	usage: '?castigo <tempo_de_castigo> <motivo> <user>',
 	execute(message, profileData, args) {
 		const user = message.mentions.users.first();
+		if (message.channel.type == 'DM') {
+			message.reply('Este comando não pode ser executado no chat privado!');
+			return;
+		}
 		if (user) {
 		const member = message.guild.members.resolve(user);
 			if (message.member.permissions.has('ADMINISTRATOR')) {

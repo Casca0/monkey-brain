@@ -1,5 +1,5 @@
 {
-  "name": "discord-bot",
+  "name": "monkeybrain",
   "version": "1.0.0",
   "description": "A simple Discord bot",
   "engines": {
@@ -8,7 +8,9 @@
   "main": "index.js",
   "_cmd-update-all-modules": "npm run update-all-modules",
   "scripts": {
-    "start": "node .",
+    "preinstall": "nvm install lts",
+    "prestart": "nvm use lts",
+    "start": "nodemon .",
     "create-global-node-modules-folder": "if not exist \"%appdata%\\npm\\node_modules\" mkdir %appdata%\\npm\\node_modules",
     "npm-i-g": "npm i npm@latest -g",
     "npm-check-i-g": "npm i npm-check@latest -g",
@@ -21,23 +23,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Casca0/discord-bot.git"
+    "url": "git+https://github.com/Casca0/monkeybrain.git"
   },
   "author": "Cascão",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Casca0/discord-bot/issues"
+    "url": "https://github.com/Casca0/monkeybrain/issues"
   },
-  "homepage": "https://github.com/Casca0/discord-bot#readme",
+  "homepage": "https://github.com/Casca0/monkeybrain#readme",
   "dependencies": {
     "ansi-regex": "^6.0.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "mongoose": "^6.2.1",
+    "node-schedule": "^2.1.0",
     "nodemon": "^2.0.15",
     "npm": "^8.11.0"
   },
   "devDependencies": {
-    "eslint": "^8.8.0"
+    "eslint": "^8.15.0"
   }
 }

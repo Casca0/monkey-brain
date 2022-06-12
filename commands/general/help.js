@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
+const commandPrefix = require('../../models/prefix');
+
 module.exports = {
   name: 'help',
   aliases: ['h'],
   description: 'Mostra todos os comandos.',
   usage: '?help <command>',
   async execute(message, profileData, args, Discord, client) {
+    const prefix = await commandPrefix.findOne().then(result => result.prefix);
     if (args[0]) {
       const command = client.help.find(cmd => cmd.name === args[0]);
       if (command) {
@@ -52,7 +55,7 @@ module.exports = {
         const current = commands.slice(start, start + 10);
 
         return new Discord.MessageEmbed({
-          title: 'Ajuda ❔ (Prefixo: ?)',
+          title: `Ajuda ❔\n(Prefixo : ${prefix})`,
           fields: await Promise.all(
             current.map(async cmdName => ({
               name: cmdName.name,

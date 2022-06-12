@@ -3,10 +3,15 @@ module.exports = {
   name: 'transferir',
   aliases: ['tr', 'trade'],
   description: 'Transfere uma quantia para álguem.',
+	category: 'economy',
   usage: '?transferir <quantia> <destinatário>',
   async execute(message, profileData, args) {
     let amount = args[0];
     const user = message.mentions.users.first();
+    if (message.channel.type == 'DM') {
+      message.reply('Este comando não pode ser executado no chat privado!');
+      return;
+    }
     if (amount === 'all') amount = profileData.coins;
     if (amount % 1 != 0 || amount <= 0) return message.reply('A transferência tem que ser um número inteiro!');
     if (user) {

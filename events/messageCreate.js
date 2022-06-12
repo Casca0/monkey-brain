@@ -1,9 +1,10 @@
-/* eslint-disable no-unused-vars */
-const { prefix } = require('../config.json');
+const commandPrefix = require('../models/prefix');
 const profileModel = require('../models/profileSchema');
+
 module.exports = {
   name:'messageCreate',
   async execute(message, client, Discord) {
+    const prefix = await commandPrefix.findOne().then((result) => result.prefix);
     if (!message.content.startsWith(prefix)) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -23,7 +24,7 @@ module.exports = {
 
     const now = Date.now();
     const timestamps = cooldowns.get(command.name);
-    const cooldownAmount = (command.cooldown || 3) * 1000;
+    const cooldownAmount = command.cooldown || 3;
 
     if (timestamps.has(message.author.id)) {
       const expirationTime = timestamps.get(message.author.id) + cooldownAmount;

@@ -7,6 +7,7 @@ module.exports = {
   name: 'comprar',
   aliases: ['b', 'cpr'],
   description: 'Compra um produto da loja.',
+	category: 'economy',
   usage: '?comprar <produto> <quantia>',
   async execute(message, profileData, args, Discord) {
     try {

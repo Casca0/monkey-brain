@@ -3,14 +3,18 @@ const { MessageEmbed } = require('discord.js');
 const { macetaVibes, macetaVisions, macetaColor } = require('./macetanciaMoves.json');
 const profileModel = require('../../models/profileSchema');
 
-
 module.exports = {
   name: 'macetancia',
 	cooldown: 160,
   aliases: ['maceta', 'mct'],
   description: 'Macete um usuário aleatório e ganhe Bananas Reias por isso!',
+	category: 'fun',
   usage: '?macetancia',
   async execute(message) {
+    if (message.channel.type == 'DM') {
+      message.reply('Este comando não pode ser executado no chat privado!');
+      return;
+    }
     await message.guild.members.fetch();
     const user = message.guild.members.cache.random().user;
 
@@ -98,7 +102,6 @@ module.exports = {
             .setColor(`${color}`)
             .setImage(`${visions}`);
           message.channel.send({ embeds: [em] });
-
           counter = await profileModel.findOneAndUpdate(
             {
               userID: message.author.id,
