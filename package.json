@@ -8,8 +8,6 @@
   "main": "index.js",
   "_cmd-update-all-modules": "npm run update-all-modules",
   "scripts": {
-    "preinstall": "nvm install lts",
-    "prestart": "nvm use lts",
     "start": "nodemon .",
     "create-global-node-modules-folder": "if not exist \"%appdata%\\npm\\node_modules\" mkdir %appdata%\\npm\\node_modules",
     "npm-i-g": "npm i npm@latest -g",
