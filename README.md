@@ -27,12 +27,8 @@ Este bot está sendo criado com o objetivo de divertimento dentro do meu servido
   ```bash
   $ npm start
   ```
-
-  Para rodar um ambiente local com atualização dinâmica de código :
-
-  ```bash
-  $ nodemon .
-  ```
+  
+  Rodando o comando `start` já inicia um ambiente local com atualização dinâmica.
 
   É necessário a criação de um arquivo `.env` com as variáveis de ambiente como `DISCORD_TOKEN` e `MONGO_TOKEN` para rodar corretamente o bot.
 </details>
