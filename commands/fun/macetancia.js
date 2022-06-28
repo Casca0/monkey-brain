@@ -30,8 +30,6 @@ module.exports = {
 
     const randomNumber = Math.floor(Math.random() * 300) + 1;
     let em;
-    let response;
-    let counter;
 
     const m = new MessageEmbed()
       .setTitle(`Você ganhou ${randomNumber} Bananinhas Reais :coin::banana:`)
@@ -68,7 +66,7 @@ module.exports = {
           .setColor(`${color}`)
           .setImage('https://media1.tenor.com/images/1d78b613692b7cfe01c2f2a4a0b2f6fc/tenor.gif?itemid=5072717');
         message.channel.send({ embeds: [em] });
-        response = await profileModel.findOneAndUpdate(
+        await profileModel.findOneAndUpdate(
           {
             userID: message.author.id,
           },
@@ -78,7 +76,7 @@ module.exports = {
             },
           },
         );
-        counter = await profileModel.findOneAndUpdate(
+        await profileModel.findOneAndUpdate(
           {
             userID: user.id,
           },
@@ -102,7 +100,7 @@ module.exports = {
             .setColor(`${color}`)
             .setImage(`${visions}`);
           message.channel.send({ embeds: [em] });
-          counter = await profileModel.findOneAndUpdate(
+          await profileModel.findOneAndUpdate(
             {
               userID: message.author.id,
             },
@@ -126,7 +124,7 @@ module.exports = {
 
         // Coins
 
-        response = await profileModel.findOneAndUpdate(
+        await profileModel.findOneAndUpdate(
           {
             userID: message.author.id,
           },
@@ -137,7 +135,7 @@ module.exports = {
           },
         );
 
-        counter = await profileModel.findOneAndUpdate(
+        await profileModel.findOneAndUpdate(
           {
             userID: user.id,
           },

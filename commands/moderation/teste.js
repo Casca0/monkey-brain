@@ -16,31 +16,35 @@ module.exports = {
   async execute(message, profileData, args, Discord, client) {
     if (message.member.permissions.has('ADMINISTRATOR')) {
       try {
-				const user = message.mentions.users.first();
-        const embed = new Discord.MessageEmbed({
-          title: 'BONK!',
-          description: `${user}`,
-          image: {
-            url: 'https://c.tenor.com/Xr8J9quvUHgAAAAd/bonk.gif',
-          },
-          color: '#03fc0f',
-        });
-        message.reply({ embeds: [embed] });
-				// const userEmbed = new Discord.MessageEmbed({
-        //   title: 'MARTELADO PELO MACACÃO',
-        //   description: 'Mas você ainda não está fora da luta!',
-        //   fields: [
-        //     {
-        //       name: 'Convite',
-        //       value: 'https://discord.gg/g2ewSK3PgB',
-        //     },
-        //   ],
-        //   image: {
-        //     url: 'https://c.tenor.com/mmGA03N6xHIAAAAM/donkey-kong-banana.gif',
-				// 	},
-				// 	color: '#f5e942',
-        // });
-				// user.send({ embeds: [userEmbed] });
+				const rolesMenu = new Discord.MessageActionRow().addComponents(
+					new Discord.MessageSelectMenu()
+						.setCustomId('select')
+						.setPlaceholder('sexo?')
+						.addOptions([
+							{
+								label: 'AA MIZERA',
+								description: 'TESTE',
+								value: '808493361186734090',
+							},
+							{
+								label: 'AA MIZERA 2',
+								description: 'TESTE 2',
+								value: '987170775561822249',
+							},
+						]),
+				);
+				const testEmbed = new Discord.MessageEmbed({
+					title: 'SEXO',
+					description: 'AAAAAAAAAAAAAAA',
+				});
+				const rolesMessage = await message.reply({ embeds: [testEmbed], components: [rolesMenu], ephemeral: true });
+				const collector = rolesMessage.createMessageComponentCollector();
+				collector.on('collect', async interaction => {
+					const user = message.guild.members.resolve(message.author);
+					const role = message.guild.roles.cache.get(interaction.values[0]);
+					user.roles.add(role).catch(console.error);
+					await interaction.update({ components: [] });
+				});
       }
       catch (err) {
         console.log(err);

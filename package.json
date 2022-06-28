@@ -36,7 +36,8 @@
     "mongoose": "^6.2.1",
     "node-schedule": "^2.1.0",
     "nodemon": "^2.0.15",
-    "npm": "^8.11.0"
+    "npm": "^8.11.0",
+		"got": ">=11.8.5"
   },
   "devDependencies": {
     "eslint": "^8.15.0"
