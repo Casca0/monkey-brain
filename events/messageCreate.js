@@ -27,16 +27,17 @@ module.exports = {
     const cooldownAmount = command.cooldown || 3;
 
     if (timestamps.has(message.author.id)) {
-      const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+      const expirationTime = timestamps.get(message.author.id) + cooldownAmount * 1000;
 
       if (now < expirationTime) {
         const timeLeft = (expirationTime - now) / 1000;
+				console.log(timeLeft);
         return message.reply(`Por favor espere \`${timeLeft.toFixed(0)}\` segundos antes de usar o comando \`${command.name}\`.`);
       }
     }
 
     timestamps.set(message.author.id, now);
-    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount * 1000);
 
     // Database
 

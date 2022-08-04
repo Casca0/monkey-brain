@@ -9,7 +9,7 @@ const job = schedule.scheduleJob(time, () => {
 module.exports = {
   name: 'teste',
   aliases: ['t'],
-  cooldown: 0,
+  cooldown: 10,
 	// cooldown: Date.parse(job.nextInvocation().toISOString()) - Date.now(),
   description: 'Comando para testar funções do bot (ADMIN)',
 	category: 'moderation',
