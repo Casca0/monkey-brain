@@ -22,7 +22,7 @@ Este bot está sendo criado com o objetivo de divertimento dentro do meu servido
   ```
   A partir daqui podemos usar multiplos comandos.
 
-  Para rodar um ambiente local sem a atualização dinâmica de código :
+  Para rodar um ambiente local :
 
   ```bash
   $ npm start
